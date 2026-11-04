@@ -1215,6 +1215,67 @@
       font-weight: bold;
     }
 
+    .stepper-hud-card {
+      background: #000;
+      border: 2px solid var(--gray-dark);
+      padding: 10px 14px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+    .stepper-hud-metric {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .stepper-hud-metric .hud-label {
+      font-size: 10px;
+      color: var(--gray-secondary);
+      letter-spacing: 1px;
+    }
+    .stepper-hud-metric .hud-val {
+      font-size: 13px;
+      font-weight: 800;
+      color: #FFF;
+      letter-spacing: 0.5px;
+    }
+    .stepper-hud-metric .hud-val.text-red { color: var(--red-heist); }
+    .stepper-hud-metric .hud-val.text-cyan { color: var(--cyan-accent); }
+    .stepper-hud-metric .hud-val.text-yellow { color: var(--amber-accent); }
+
+    .stepper-cheatsheet {
+      background: rgba(10, 10, 10, 0.85);
+      border: 1px solid rgba(230, 0, 18, 0.35);
+      border-left: 3px solid var(--red-heist);
+      padding: 10px 12px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      line-height: 1.45;
+      color: var(--gray-secondary);
+    }
+    .stepper-cheatsheet-title {
+      font-weight: 800;
+      color: #FFF;
+      margin-bottom: 4px;
+      letter-spacing: 1px;
+    }
+    .stepper-rule strong {
+      color: #FFF;
+    }
+
+    .sandbox-rec-badge {
+      background: rgba(0, 240, 255, 0.08);
+      border: 1px dashed rgba(0, 240, 255, 0.4);
+      padding: 8px 10px;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--cyan-accent);
+      line-height: 1.4;
+      border-radius: 2px;
+    }
+
     /* Slide 08: Live Sandbox Playground */
     .sandbox-layout {
       display: grid;
@@ -2248,7 +2309,7 @@
         <div class="slide-content-area">
           <div class="stepper-layout">
             <div class="stepper-left-col stagger-1">
-              <div class="hud-control-group" style="padding: 12px;">
+              <div class="hud-control-group" style="padding: 10px;">
                 <div style="display: flex; gap: 8px;">
                   <button class="heist-btn" id="btn-step-play" onclick="toggleStepperPlay()">
                     AUTO PLAY
@@ -2262,8 +2323,40 @@
                 </div>
               </div>
 
+              <!-- Live Stepper HUD Card -->
+              <div class="stepper-hud-card" id="stepper-hud-card">
+                <div class="stepper-hud-metric">
+                  <span class="hud-label">CURRENT SCAN:</span>
+                  <span id="stepper-cur-pt" class="hud-val text-red">POINT #0</span>
+                </div>
+                <div class="stepper-hud-metric">
+                  <span class="hud-label">PHASE:</span>
+                  <span id="stepper-phase" class="hud-val">SEED DISCOVERY</span>
+                </div>
+                <div class="stepper-hud-metric" style="grid-column: span 2;">
+                  <span class="hud-label">RECRUIT QUEUE:</span>
+                  <span id="stepper-queue" class="hud-val text-cyan">EMPTY</span>
+                </div>
+                <div class="stepper-hud-metric">
+                  <span class="hud-label">SYNDICATES SEALED:</span>
+                  <span id="stepper-syndicates" class="hud-val text-yellow">0 / 2</span>
+                </div>
+                <div class="stepper-hud-metric">
+                  <span class="hud-label">POINTS SCANNED:</span>
+                  <span id="stepper-scanned" class="hud-val">0 / 24</span>
+                </div>
+              </div>
+
               <div class="step-log-box" id="stepper-log-box">
-                <div class="step-log-entry active">// INITIALIZING EXPANSION SCAN...</div>
+                <div class="step-log-entry active">// SCAN INITIALIZED: READY TO INFILTRATE</div>
+              </div>
+
+              <div class="stepper-cheatsheet">
+                <div class="stepper-cheatsheet-title">TACTICAL LOGIC (EXPLAIN THIS):</div>
+                <div class="stepper-rule">&bull; <strong>Step 1</strong>: Cast &epsilon; radar around target.</div>
+                <div class="stepper-rule">&bull; <strong>Step 2</strong>: If crew &ge; MinPts(3) &rarr; declare Mastermind &amp; queue crew.</div>
+                <div class="stepper-rule">&bull; <strong>Step 3</strong>: Expand queue recursively to seal perimeter.</div>
+                <div class="stepper-rule">&bull; <strong>Step 4</strong>: Isolated points (&lt; 3 crew) &rarr; marked Bystander.</div>
               </div>
             </div>
 
@@ -2307,9 +2400,9 @@
               <div class="hud-control-group">
                 <div class="hud-slider-row">
                   <label class="hud-label" for="sb-eps">EPS RADIUS:</label>
-                  <span id="sb-eps-val" class="hud-value-pill">42 px</span>
+                  <span id="sb-eps-val" class="hud-value-pill">54 px</span>
                 </div>
-                <input type="range" id="sb-eps" min="20" max="90" value="42" oninput="debouncedSandboxUpdate(); triggerPresenterTalk();">
+                <input type="range" id="sb-eps" min="20" max="90" value="54" oninput="debouncedSandboxUpdate(); triggerPresenterTalk();">
               </div>
 
               <div class="hud-control-group">
@@ -2319,13 +2412,17 @@
                 </div>
                 <input type="range" id="sb-minpts" min="2" max="10" value="4" oninput="debouncedSandboxUpdate(); triggerPresenterTalk();">
               </div>
+
+              <div class="sandbox-rec-badge">
+                <strong style="color:#FFF;">TACTICAL INTEL:</strong><br>
+                &bull; <strong>TWO MOONS</strong>: Optimal &epsilon; = 50&ndash;56 px.<br>
+                &bull; <strong>CONCENTRIC RINGS</strong>: Optimal &epsilon; = 48&ndash;52 px.<br>
+                &bull; Slide &epsilon; &darr; to fragment; slide &epsilon; &uarr; to merge into monopoly!
+              </div>
             </div>
 
             <div class="stagger-2" style="position: relative; height: 720px;">
               <canvas id="canvas-sandbox" class="heist-canvas" style="width:100%; height:100%;"></canvas>
-              <div style="position: absolute; top: 12px; left: 16px; font-family: var(--font-mono); font-size: 13px; color: #FFF; background: rgba(0,0,0,0.85); padding: 4px 10px; pointer-events: none;">
-                [ CLICK TO ADD TARGET // DRAG TO SPRAY (CAP 1500) ]
-              </div>
             </div>
           </div>
         </div>
@@ -2985,28 +3082,29 @@
       6: `
         <strong>[3:45 - 4:45] Slide 6: Three Personas (Isaac Bascos)</strong>
         <ul>
-          <li>Every point receives one of three heist classifications:</li>
-          <li><strong>Mastermind (Core):</strong> &ge; MinPts in its radar. Drives cluster expansion.</li>
-          <li><strong>Accomplice (Border):</strong> &lt; MinPts, but within reach of a Mastermind. Secures the boundary.</li>
-          <li><strong>Bystander (Noise):</strong> Neither. Isolated points left behind—natural anomaly detection!</li>
+          <li><strong>Interactive Demo:</strong> Click <em>ROLE // 02 ACCOMPLICE</em> or <em>BORDER ONLY [14]</em>: show all 14 Accomplices light up with white diamonds and cyan dashed recruitment tethers connecting to Masterminds!</li>
+          <li><strong>Mastermind (Core):</strong> &ge; MinPts (4+) in its radar. Dense center; drives cluster expansion.</li>
+          <li><strong>Accomplice (Border):</strong> &lt; MinPts, but within &epsilon; reach of a Mastermind. Secures the boundary.</li>
+          <li><strong>Bystander (Noise):</strong> Neither. Isolated points left behind—zero manual cleanup needed!</li>
         </ul>
       `,
       7: `
         <strong>[4:45 - 6:00] Slide 7: Step-by-Step Algorithm (Lixter Dinawanao)</strong>
         <ul>
-          <li>Walk through the step-by-step animation:</li>
-          <li>1. Pick an unvisited point. Check if it's a Mastermind.</li>
-          <li>2. If yes, start a new syndicate and add its neighbors to the active queue.</li>
-          <li>3. Recursively check each neighbor. If a neighbor is also a Mastermind, its circle expands the syndicate!</li>
-          <li>4. Once the queue runs dry, stamp "HEIST COMPLETE" and pick the next unvisited point.</li>
+          <li><strong>Interactive Demo:</strong> 24 numbered target points (#0–#23) and Live Stepper HUD.</li>
+          <li>Click <em>NEXT STEP &rarr;</em>: Point #0 is evaluated with pulsing red circle (&epsilon; = 65px). 6 neighbors detected.</li>
+          <li>Click <em>NEXT STEP &rarr;</em>: Point #0 founds Syndicate 1. Live queue fills: [#1, #3, #2, #4, #8] with red laser links.</li>
+          <li>Click <em>AUTO PLAY</em>: BFS floods Syndicate 1 (Red #0–#9), then Syndicate 2 (Cyan #10–#19), and marks #20–#23 as Noise. Watch for [HEIST COMPLETE] stamp!</li>
         </ul>
       `,
       8: `
         <strong>[6:00 - 7:30] Slide 8: Live Tactical Playground (Lixter Dinawanao)</strong>
         <ul>
-          <li>Interactive demo! Click or drag to add points; switch presets (Moons, Rings, Blobs).</li>
-          <li>Spatial hash grid handles up to 1,500 points in under 3 milliseconds!</li>
-          <li>Show what happens when &epsilon; is too small vs too large.</li>
+          <li><strong>Interactive Demo:</strong> Live DBSCAN engine at 60fps with O(N) spatial grid.</li>
+          <li>Click <em>TWO MOONS</em>: Exactly 2 crescents clustered. Proves DBSCAN follows non-linear contours.</li>
+          <li>Click <em>RINGS</em>: 2 concentric rings sharing the same center. K-Means fails 100%; DBSCAN succeeds.</li>
+          <li>Drag <em>EPS RADIUS</em>: 25px (clusters shatter) &rarr; 85px (clusters merge). Shows importance of tuning.</li>
+          <li>Click & drag to spray points live; observe instant cluster updates.</li>
         </ul>
       `,
       9: `
@@ -3537,42 +3635,47 @@
     /* ==========================================================================
        9. SYNTHETIC DATASET GENERATORS
        ========================================================================== */
-    function generateTwoMoons(nPoints, width, height, noiseFactor = 0.08) {
+    function generateTwoMoons(nPoints, width, height, noise = 8) {
       const points = [];
       const nHalf = Math.floor(nPoints / 2);
+      const cx = width / 2, cy = height / 2;
+      const radius = Math.min(width, height) * 0.32;
 
+      // Upper Moon (Red Syndicate)
       for (let i = 0; i < nHalf; i++) {
-        const theta = (Math.PI * i) / nHalf;
-        const x = Math.cos(theta) * 0.35 + 0.35 + (Math.random() - 0.5) * noiseFactor;
-        const y = Math.sin(theta) * 0.35 + 0.45 + (Math.random() - 0.5) * noiseFactor;
-        points.push({ x: x * width, y: (1 - y) * height });
+        const theta = (Math.PI * i) / (nHalf - 1);
+        const x = cx - radius * 0.45 + Math.cos(theta) * radius + (Math.random() - 0.5) * noise * 2;
+        const y = cy - radius * 0.22 - Math.sin(theta) * radius + (Math.random() - 0.5) * noise * 2;
+        points.push({ x, y });
       }
 
+      // Lower Moon (Cyan Syndicate)
       for (let i = 0; i < nHalf; i++) {
-        const theta = (Math.PI * i) / nHalf;
-        const x = 1 - (Math.cos(theta) * 0.35 + 0.35) + (Math.random() - 0.5) * noiseFactor;
-        const y = 0.55 - (Math.sin(theta) * 0.35) + (Math.random() - 0.5) * noiseFactor;
-        points.push({ x: x * width, y: (1 - y) * height });
+        const theta = (Math.PI * i) / (nHalf - 1);
+        const x = cx + radius * 0.45 - Math.cos(theta) * radius + (Math.random() - 0.5) * noise * 2;
+        const y = cy + radius * 0.22 + Math.sin(theta) * radius + (Math.random() - 0.5) * noise * 2;
+        points.push({ x, y });
       }
       return points;
     }
 
     function generateConcentricRings(nPoints, width, height) {
       const points = [];
+      const cx = width / 2, cy = height / 2;
       const nInner = Math.floor(nPoints * 0.4);
       const nOuter = nPoints - nInner;
-      const cx = width / 2;
-      const cy = height / 2;
 
+      // Inner ring: radius 85px (dense, 60 points)
       for (let i = 0; i < nInner; i++) {
-        const angle = Math.random() * Math.PI * 2;
-        const r = 40 + Math.random() * 20;
+        const angle = (i / nInner) * Math.PI * 2;
+        const r = 85 + (Math.random() - 0.5) * 14;
         points.push({ x: cx + Math.cos(angle) * r, y: cy + Math.sin(angle) * r });
       }
 
+      // Outer ring: radius 195px (90 points, clear 110px separation > eps)
       for (let i = 0; i < nOuter; i++) {
-        const angle = Math.random() * Math.PI * 2;
-        const r = 110 + Math.random() * 25;
+        const angle = (i / nOuter) * Math.PI * 2;
+        const r = 195 + (Math.random() - 0.5) * 18;
         points.push({ x: cx + Math.cos(angle) * r, y: cy + Math.sin(angle) * r });
       }
       return points;
@@ -3580,25 +3683,26 @@
 
     function generateBlobsWithNoise(nPoints, width, height) {
       const points = [];
-      const nBlobs = 3;
-      const pointsPerBlob = Math.floor((nPoints * 0.8) / nBlobs);
       const centers = [
-        { x: width * 0.25, y: height * 0.4 },
-        { x: width * 0.75, y: height * 0.35 },
-        { x: width * 0.5, y: height * 0.75 }
+        { x: width * 0.28, y: height * 0.42 },
+        { x: width * 0.72, y: height * 0.38 },
+        { x: width * 0.50, y: height * 0.74 }
       ];
 
       centers.forEach(c => {
-        for (let i = 0; i < pointsPerBlob; i++) {
-          const r = Math.random() * 45;
-          const theta = Math.random() * Math.PI * 2;
-          points.push({ x: c.x + Math.cos(theta) * r, y: c.y + Math.sin(theta) * r });
+        for (let i = 0; i < 35; i++) {
+          const a = Math.random() * Math.PI * 2;
+          const r = Math.pow(Math.random(), 0.75) * 55;
+          points.push({ x: c.x + Math.cos(a) * r, y: c.y + Math.sin(a) * r });
         }
       });
 
-      const nNoise = nPoints - points.length;
-      for (let i = 0; i < nNoise; i++) {
-        points.push({ x: Math.random() * width, y: Math.random() * height });
+      // 18 isolated noise outliers in margins
+      for (let i = 0; i < 18; i++) {
+        points.push({
+          x: 40 + Math.random() * (width - 80),
+          y: 40 + Math.random() * (height - 80)
+        });
       }
       return points;
     }
@@ -3910,7 +4014,16 @@
       });
     }
 
-    let personaPoints = [], activeRoleFilter = 'all';
+    /* ==========================================================================
+       SLIDE 06: THE THREE PERSONAS (CORE, BORDER & NOISE)
+       Presenter: Isaac Bascos (The Navigator)
+       - 30 Masterminds (Core): Command center points with >= MinPts (4) within eps (48)
+       - 14 Accomplices (Border): Outer boundary operatives with < MinPts, but within eps of Mastermind
+       - 8 Bystanders (Noise): Isolated outliers unreachable from any Mastermind
+       ========================================================================== */
+    let personaPoints = [];
+    let activeRoleFilter = 'all';
+    let personaHoverIdx = -1;
 
     function initPersonaCanvas() {
       const canvas = document.getElementById('canvas-personas');
@@ -3919,23 +4032,98 @@
       const { width, height } = setupCanvasDPR(canvas, ctx);
 
       personaPoints = [];
-      const cx = width * 0.48, cy = height * 0.52;
-      for (let i = 0; i < 40; i++) {
-        const r = Math.random() * 70;
-        const a = Math.random() * Math.PI * 2;
-        personaPoints.push({ x: cx + Math.cos(a) * r, y: cy + Math.sin(a) * r });
+      const w = width, h = height;
+
+      // Cluster 1 (Alpha Syndicate, 26 points total: 18 Core + 8 Border)
+      const c1x = w * 0.38, c1y = h * 0.50;
+      for (let i = 0; i < 18; i++) {
+        const a = (i / 18) * Math.PI * 2;
+        const r = (i % 2 === 0 ? 18 : 38) + Math.sin(i * 3) * 6;
+        personaPoints.push({ x: c1x + Math.cos(a) * r, y: c1y + Math.sin(a) * r, tag: 'Alpha Core' });
       }
-      for (let i = 0; i < 15; i++) {
-        personaPoints.push({ x: 30 + Math.random() * (width - 60), y: 30 + Math.random() * (height - 60) });
+      // 8 Accomplices ringing Cluster 1 perimeter (radius 78px, within eps=48px of radius 38px cores!)
+      for (let i = 0; i < 8; i++) {
+        const a = (i / 8) * Math.PI * 2 + 0.22;
+        personaPoints.push({ x: c1x + Math.cos(a) * 78, y: c1y + Math.sin(a) * 78, tag: 'Alpha Border' });
       }
+
+      // Cluster 2 (Beta Syndicate, 18 points total: 12 Core + 6 Border)
+      const c2x = w * 0.72, c2y = h * 0.44;
+      for (let i = 0; i < 12; i++) {
+        const a = (i / 12) * Math.PI * 2;
+        const r = (i % 2 === 0 ? 15 : 32);
+        personaPoints.push({ x: c2x + Math.cos(a) * r, y: c2y + Math.sin(a) * r, tag: 'Beta Core' });
+      }
+      // 6 Accomplices ringing Cluster 2 perimeter (radius 70px)
+      for (let i = 0; i < 6; i++) {
+        const a = (i / 6) * Math.PI * 2 + 0.35;
+        personaPoints.push({ x: c2x + Math.cos(a) * 70, y: c2y + Math.sin(a) * 70, tag: 'Beta Border' });
+      }
+
+      // 8 Bystanders (Noise points placed far outside any cluster)
+      const noisePositions = [
+        { x: w * 0.14, y: h * 0.22 },
+        { x: w * 0.16, y: h * 0.80 },
+        { x: w * 0.52, y: h * 0.18 },
+        { x: w * 0.55, y: h * 0.82 },
+        { x: w * 0.88, y: h * 0.20 },
+        { x: w * 0.90, y: h * 0.78 },
+        { x: w * 0.32, y: h * 0.20 },
+        { x: w * 0.74, y: h * 0.82 }
+      ];
+      noisePositions.forEach(np => personaPoints.push({ x: np.x, y: np.y, tag: 'Bystander' }));
+
+      // Mouse hover listener
+      canvas.onmousemove = (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const stage = document.getElementById('deck-stage');
+        const scale = stage ? (stage.getBoundingClientRect().width / 1920) : 1;
+        const mx = (e.clientX - rect.left) / scale;
+        const my = (e.clientY - rect.top) / scale;
+
+        let closestIdx = -1, minDist = 28;
+        personaPoints.forEach((p, idx) => {
+          const d = Math.hypot(p.x - mx, p.y - my);
+          if (d < minDist) { minDist = d; closestIdx = idx; }
+        });
+        if (personaHoverIdx !== closestIdx) {
+          personaHoverIdx = closestIdx;
+          drawPersonaFrame();
+        }
+      };
+
+      canvas.onmouseleave = () => {
+        if (personaHoverIdx !== -1) {
+          personaHoverIdx = -1;
+          drawPersonaFrame();
+        }
+      };
+
       drawPersonaFrame();
     }
 
     function setRoleFilter(role) {
       activeRoleFilter = role;
-      document.querySelectorAll('#slide-06 .persona-card').forEach(c => c.classList.remove('active'));
-      document.querySelectorAll('#slide-06 .preset-btn').forEach(b => b.classList.remove('active'));
-      if (event && event.currentTarget) event.currentTarget.classList.add('active');
+
+      // Update Persona Cards on left
+      const cardCore = document.querySelector('#slide-06 .persona-card:nth-child(1)');
+      const cardBorder = document.querySelector('#slide-06 .persona-card:nth-child(2)');
+      const cardNoise = document.querySelector('#slide-06 .persona-card:nth-child(3)');
+
+      if (cardCore) cardCore.classList.toggle('active', role === 'core');
+      if (cardBorder) cardBorder.classList.toggle('active', role === 'border');
+      if (cardNoise) cardNoise.classList.toggle('active', role === 'noise');
+
+      // Update Filter buttons
+      document.querySelectorAll('#slide-06 .preset-btn').forEach(btn => {
+        const txt = btn.textContent.toLowerCase();
+        if (role === 'all' && txt.includes('all')) btn.classList.add('active');
+        else if (role === 'core' && txt.includes('core')) btn.classList.add('active');
+        else if (role === 'border' && txt.includes('border')) btn.classList.add('active');
+        else if (role === 'noise' && txt.includes('noise')) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+
       drawPersonaFrame();
       triggerPresenterTalk();
     }
@@ -3945,48 +4133,270 @@
       if (!canvas || currentSlide !== 6) return;
       const ctx = canvas.getContext('2d');
       const w = canvas.clientWidth, h = canvas.clientHeight;
+      const eps = 48, minPts = 4;
 
-      ctx.fillStyle = '#0D0D0D';
+      // 1. Dark Noir Background
+      ctx.fillStyle = '#080B10';
       ctx.fillRect(0, 0, w, h);
 
-      const res = runDBSCANAccelerated(personaPoints, 48, 4);
+      // Subtle tactical grid
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
+      ctx.lineWidth = 1;
+      for (let x = 40; x < w; x += 60) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+      }
+      for (let y = 40; y < h; y += 60) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+      }
+
+      if (personaPoints.length === 0) return;
+
+      const res = runDBSCANAccelerated(personaPoints, eps, minPts);
+
+      // Pre-calculate nearest core for each border point to draw recruitment tether
+      const grid = new SpatialGrid(personaPoints, eps);
+      const borderRecruiters = new Array(personaPoints.length).fill(null);
 
       personaPoints.forEach((p, idx) => {
+        if (res.pointTypes[idx] === 'border') {
+          const neighbors = grid.getNeighbors(idx, eps);
+          let closestCore = null, minD = Infinity;
+          neighbors.forEach(nIdx => {
+            if (res.pointTypes[nIdx] === 'core') {
+              const d = Math.hypot(p.x - personaPoints[nIdx].x, p.y - personaPoints[nIdx].y);
+              if (d < minD) { minD = d; closestCore = nIdx; }
+            }
+          });
+          borderRecruiters[idx] = closestCore;
+        }
+      });
+
+      // 2. Draw density connection webbing between Core points
+      for (let i = 0; i < personaPoints.length; i++) {
+        if (res.pointTypes[i] === 'core') {
+          const neighbors = grid.getNeighbors(i, eps);
+          neighbors.forEach(j => {
+            if (j > i && res.pointTypes[j] === 'core') {
+              const dim = activeRoleFilter !== 'all' && activeRoleFilter !== 'core';
+              ctx.strokeStyle = dim ? 'rgba(230, 0, 18, 0.08)' : 'rgba(230, 0, 18, 0.40)';
+              ctx.lineWidth = 1.5;
+              ctx.beginPath();
+              ctx.moveTo(personaPoints[i].x, personaPoints[i].y);
+              ctx.lineTo(personaPoints[j].x, personaPoints[j].y);
+              ctx.stroke();
+            }
+          });
+        }
+      }
+
+      // 3. Draw dashed recruitment tethers from Accomplices (Border) to their recruiting Masterminds
+      personaPoints.forEach((p, idx) => {
+        if (res.pointTypes[idx] === 'border' && borderRecruiters[idx] !== null) {
+          const corePt = personaPoints[borderRecruiters[idx]];
+          const isSelected = activeRoleFilter === 'border' || personaHoverIdx === idx;
+          const dim = activeRoleFilter !== 'all' && activeRoleFilter !== 'border';
+
+          ctx.strokeStyle = isSelected ? '#00F0FF' : (dim ? 'rgba(255, 255, 255, 0.12)' : 'rgba(255, 215, 0, 0.45)');
+          ctx.lineWidth = isSelected ? 2 : 1.2;
+          ctx.setLineDash([4, 4]);
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(corePt.x, corePt.y);
+          ctx.stroke();
+          ctx.setLineDash([]);
+        }
+      });
+
+      // 4. Render All Points
+      personaPoints.forEach((p, idx) => {
         const role = res.pointTypes[idx];
-        const visible = activeRoleFilter === 'all' || activeRoleFilter === role;
+        const isHovered = personaHoverIdx === idx;
+        const visible = activeRoleFilter === 'all' || activeRoleFilter === role || isHovered;
 
         if (role === 'core') {
-          ctx.fillStyle = visible ? '#E60012' : 'rgba(230, 0, 18, 0.2)';
-          ctx.fillRect(p.x - 6, p.y - 6, 12, 12);
+          // Mastermind [Core Point]: Red Shield
+          ctx.fillStyle = visible ? '#E60012' : 'rgba(230, 0, 18, 0.15)';
+          ctx.fillRect(p.x - 7, p.y - 7, 14, 14);
+
+          ctx.strokeStyle = visible ? '#FFFFFF' : 'rgba(255, 255, 255, 0.2)';
+          ctx.lineWidth = 1.5;
+          ctx.strokeRect(p.x - 7, p.y - 7, 14, 14);
+
           if (visible) {
-            ctx.strokeStyle = '#FFFFFF';
-            ctx.lineWidth = 1;
-            ctx.strokeRect(p.x - 6, p.y - 6, 12, 12);
+            // Crown dot in center
+            ctx.fillStyle = '#FFF';
+            ctx.beginPath(); ctx.arc(p.x, p.y, 2.5, 0, Math.PI * 2); ctx.fill();
           }
         } else if (role === 'border') {
-          ctx.fillStyle = visible ? '#FFFFFF' : 'rgba(255, 255, 255, 0.2)';
-          ctx.fillRect(p.x - 4, p.y - 4, 8, 8);
+          // Accomplice [Border Point]: Crisp White Diamond with Red Border
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(Math.PI / 4);
+
+          ctx.fillStyle = visible ? '#FFFFFF' : 'rgba(255, 255, 255, 0.15)';
+          ctx.fillRect(-6, -6, 12, 12);
+
+          ctx.strokeStyle = visible ? '#E60012' : 'rgba(230, 0, 18, 0.2)';
+          ctx.lineWidth = 2;
+          ctx.strokeRect(-6, -6, 12, 12);
+          ctx.restore();
+
           if (visible) {
-            ctx.strokeStyle = '#E60012';
-            ctx.lineWidth = 1.5;
-            ctx.strokeRect(p.x - 4, p.y - 4, 8, 8);
+            ctx.fillStyle = '#E60012';
+            ctx.beginPath(); ctx.arc(p.x, p.y, 2, 0, Math.PI * 2); ctx.fill();
           }
         } else {
-          ctx.fillStyle = visible ? 'var(--amber-accent)' : 'rgba(255, 215, 0, 0.2)';
-          ctx.fillRect(p.x - 4, p.y - 4, 8, 8);
+          // Bystander [Noise / Outlier]: Amber Hazard 'X'
+          ctx.strokeStyle = visible ? '#FFD700' : 'rgba(255, 215, 0, 0.2)';
+          ctx.lineWidth = visible ? 2 : 1;
+          ctx.beginPath();
+          ctx.moveTo(p.x - 6, p.y - 6); ctx.lineTo(p.x + 6, p.y + 6);
+          ctx.moveTo(p.x + 6, p.y - 6); ctx.lineTo(p.x - 6, p.y + 6);
+          ctx.stroke();
+
           if (visible) {
-            ctx.strokeStyle = '#E60012';
-            ctx.lineWidth = 1.5;
-            ctx.beginPath();
-            ctx.moveTo(p.x - 6, p.y - 6);
-            ctx.lineTo(p.x + 6, p.y + 6);
-            ctx.stroke();
+            ctx.strokeStyle = 'rgba(255, 152, 0, 0.4)';
+            ctx.beginPath(); ctx.arc(p.x, p.y, 8, 0, Math.PI * 2); ctx.stroke();
           }
         }
       });
+
+      // 5. Tactical Callout Banner when Filter is Active
+      if (activeRoleFilter === 'border') {
+        const sampleBorder = personaPoints.find((_, idx) => res.pointTypes[idx] === 'border');
+        if (sampleBorder) {
+          ctx.strokeStyle = '#00F0FF';
+          ctx.lineWidth = 1.5;
+          ctx.setLineDash([3, 3]);
+          ctx.beginPath();
+          ctx.moveTo(sampleBorder.x, sampleBorder.y);
+          ctx.lineTo(sampleBorder.x - 45, sampleBorder.y - 40);
+          ctx.lineTo(sampleBorder.x - 120, sampleBorder.y - 40);
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          ctx.fillStyle = 'rgba(10, 10, 10, 0.92)';
+          ctx.fillRect(sampleBorder.x - 420, sampleBorder.y - 54, 295, 28);
+          ctx.strokeStyle = '#00F0FF';
+          ctx.strokeRect(sampleBorder.x - 420, sampleBorder.y - 54, 295, 28);
+          ctx.font = 'bold 11px monospace';
+          ctx.fillStyle = '#00F0FF';
+          ctx.fillText('ACCOMPLICE: < 4 CREW, BUT TOUCHES MASTERMIND!', sampleBorder.x - 412, sampleBorder.y - 36);
+        }
+      } else if (activeRoleFilter === 'core') {
+        const sampleCore = personaPoints.find((_, idx) => res.pointTypes[idx] === 'core');
+        if (sampleCore) {
+          ctx.strokeStyle = '#E60012';
+          ctx.lineWidth = 1.5;
+          ctx.setLineDash([3, 3]);
+          ctx.beginPath();
+          ctx.moveTo(sampleCore.x, sampleCore.y);
+          ctx.lineTo(sampleCore.x + 40, sampleCore.y - 35);
+          ctx.lineTo(sampleCore.x + 100, sampleCore.y - 35);
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          ctx.fillStyle = 'rgba(10, 10, 10, 0.92)';
+          ctx.fillRect(sampleCore.x + 100, sampleCore.y - 48, 285, 28);
+          ctx.strokeStyle = '#E60012';
+          ctx.strokeRect(sampleCore.x + 100, sampleCore.y - 48, 285, 28);
+          ctx.font = 'bold 11px monospace';
+          ctx.fillStyle = '#FFF';
+          ctx.fillText('MASTERMIND: ≥ 4 CREW WITHIN ε (COMMAND CORE)', sampleCore.x + 108, sampleCore.y - 30);
+        }
+      } else if (activeRoleFilter === 'noise') {
+        const sampleNoise = personaPoints.find((_, idx) => res.pointTypes[idx] === 'noise');
+        if (sampleNoise) {
+          ctx.strokeStyle = '#FFD700';
+          ctx.lineWidth = 1.5;
+          ctx.setLineDash([3, 3]);
+          ctx.beginPath();
+          ctx.moveTo(sampleNoise.x, sampleNoise.y);
+          ctx.lineTo(sampleNoise.x + 35, sampleNoise.y - 30);
+          ctx.lineTo(sampleNoise.x + 85, sampleNoise.y - 30);
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          ctx.fillStyle = 'rgba(10, 10, 10, 0.92)';
+          ctx.fillRect(sampleNoise.x + 85, sampleNoise.y - 44, 275, 28);
+          ctx.strokeStyle = '#FFD700';
+          ctx.strokeRect(sampleNoise.x + 85, sampleNoise.y - 44, 275, 28);
+          ctx.font = 'bold 11px monospace';
+          ctx.fillStyle = '#FFD700';
+          ctx.fillText('BYSTANDER: ISOLATED OUTLIER (NO CORE REACHABLE)', sampleNoise.x + 92, sampleNoise.y - 26);
+        }
+      }
+
+      // 6. Interactive Hover Radar Inspection
+      if (personaHoverIdx >= 0 && personaHoverIdx < personaPoints.length) {
+        const hp = personaPoints[personaHoverIdx];
+        const hRole = res.pointTypes[personaHoverIdx];
+        const neighbors = grid.getNeighbors(personaHoverIdx, eps);
+
+        // Radar circle
+        ctx.strokeStyle = hRole === 'core' ? '#E60012' : (hRole === 'border' ? '#00F0FF' : '#FFD700');
+        ctx.fillStyle = hRole === 'core' ? 'rgba(230, 0, 18, 0.12)' : (hRole === 'border' ? 'rgba(0, 240, 255, 0.12)' : 'rgba(255, 215, 0, 0.10)');
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(hp.x, hp.y, eps, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        // Highlight detected neighbors
+        neighbors.forEach(nIdx => {
+          const np = personaPoints[nIdx];
+          ctx.strokeStyle = '#00F0FF';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.arc(np.x, np.y, 11, 0, Math.PI * 2);
+          ctx.stroke();
+        });
+
+        // Hover tooltip
+        const roleLabel = hRole === 'core' ? 'MASTERMIND [CORE]' : (hRole === 'border' ? 'ACCOMPLICE [BORDER]' : 'BYSTANDER [NOISE]');
+        const tipText = `${roleLabel} // ${neighbors.length} NEIGHBORS [${neighbors.length >= minPts ? '≥ MinPts 4' : '< MinPts 4'}]`;
+        ctx.font = 'bold 11px monospace';
+        const tw = ctx.measureText(tipText).width;
+        const tx = Math.min(hp.x + 16, w - tw - 24);
+        const ty = hp.y > 40 ? hp.y - 16 : hp.y + 24;
+
+        ctx.fillStyle = 'rgba(10, 10, 10, 0.95)';
+        ctx.fillRect(tx - 6, ty - 14, tw + 12, 22);
+        ctx.strokeStyle = ctx.strokeStyle;
+        ctx.strokeRect(tx - 6, ty - 14, tw + 12, 22);
+        ctx.fillStyle = '#FFF';
+        ctx.fillText(tipText, tx, ty + 1);
+      }
+
+      // 7. Top HUD Banner
+      const cores = res.pointTypes.filter(t => t === 'core').length;
+      const borders = res.pointTypes.filter(t => t === 'border').length;
+      const noise = res.pointTypes.filter(t => t === 'noise').length;
+      const hudText = `● DENSITY CLASSIFICATION AUDIT: ${cores} MASTERMINDS (CORE) • ${borders} ACCOMPLICES (BORDER) • ${noise} BYSTANDERS (NOISE)`;
+
+      ctx.font = 'bold 11px monospace';
+      const htw = ctx.measureText(hudText).width;
+      ctx.fillStyle = 'rgba(10, 10, 10, 0.90)';
+      ctx.fillRect(16, 12, htw + 20, 24);
+      ctx.strokeStyle = 'var(--red-heist)';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(16, 12, htw + 20, 24);
+
+      ctx.fillStyle = '#00F0FF';
+      ctx.fillText(hudText, 24, 28);
     }
 
-    let stepperPoints = [], stepperState = null, stepperPlayInterval = null;
+    /* ==========================================================================
+       SLIDE 07: STEP-BY-STEP ALGORITHM EXPANSION
+       Presenter: Lixter Dinawanao (The Tactician)
+       - 24 numbered, clearly arranged points
+       - Syndicate 1: Points 0-9 (Expands in Red)
+       - Syndicate 2: Points 10-19 (Expands in Cyan)
+       - Noise: Points 20-23 (Isolated Bystanders)
+       ========================================================================== */
+    let stepperPoints = [];
+    let stepperState = null;
+    let stepperPlayInterval = null;
 
     function initStepperCanvas() {
       const canvas = document.getElementById('canvas-stepper');
@@ -4000,17 +4410,62 @@
       if (stepperPlayInterval) {
         clearInterval(stepperPlayInterval);
         stepperPlayInterval = null;
-        document.getElementById('btn-step-play').textContent = 'AUTO PLAY';
+        const btn = document.getElementById('btn-step-play');
+        if (btn) btn.textContent = 'AUTO PLAY';
       }
 
       const stamp = document.getElementById('heist-stamp-07');
       if (stamp) stamp.classList.remove('stamped');
 
       const canvas = document.getElementById('canvas-stepper');
-      stepperPoints = generateTwoMoons(36, canvas.clientWidth, canvas.clientHeight, 0.05);
+      const w = canvas.clientWidth || 1200;
+      const h = canvas.clientHeight || 700;
+
+      stepperPoints = [];
+
+      // Syndicate 1 (Points 0-9 in upper-left cluster)
+      const c1x = w * 0.35, c1y = h * 0.45;
+      const s1 = [
+        { x: c1x - 70, y: c1y - 30 }, // #0 (Seed Mastermind)
+        { x: c1x - 35, y: c1y - 45 }, // #1 (Mastermind)
+        { x: c1x - 40, y: c1y },      // #2 (Mastermind)
+        { x: c1x,      y: c1y - 20 }, // #3 (Mastermind)
+        { x: c1x + 10, y: c1y + 20 }, // #4 (Mastermind)
+        { x: c1x + 45, y: c1y + 35 }, // #5 (Mastermind)
+        { x: c1x + 75, y: c1y + 60 }, // #6 (Mastermind)
+        { x: c1x + 30, y: c1y - 10 }, // #7 (Mastermind)
+        { x: c1x - 95, y: c1y - 25 }, // #8 (Border Accomplice)
+        { x: c1x + 105, y: c1y + 80 } // #9 (Border Accomplice)
+      ];
+      s1.forEach((p, idx) => stepperPoints.push({ x: p.x, y: p.y, id: idx }));
+
+      // Syndicate 2 (Points 10-19 in lower-right cluster)
+      const c2x = w * 0.72, c2y = h * 0.48;
+      const s2 = [
+        { x: c2x - 60, y: c2y + 40 }, // #10 (Seed Mastermind)
+        { x: c2x - 30, y: c2y + 20 }, // #11 (Mastermind)
+        { x: c2x,      y: c2y },      // #12 (Mastermind)
+        { x: c2x + 35, y: c2y - 25 }, // #13 (Mastermind)
+        { x: c2x + 70, y: c2y - 45 }, // #14 (Mastermind)
+        { x: c2x - 20, y: c2y + 55 }, // #15 (Mastermind)
+        { x: c2x + 15, y: c2y + 10 }, // #16 (Mastermind)
+        { x: c2x + 50, y: c2y - 10 }, // #17 (Mastermind)
+        { x: c2x - 85, y: c2y + 55 }, // #18 (Border Accomplice)
+        { x: c2x + 95, y: c2y - 65 }  // #19 (Border Accomplice)
+      ];
+      s2.forEach((p, idx) => stepperPoints.push({ x: p.x, y: p.y, id: 10 + idx }));
+
+      // Bystanders / Noise (Points 20-23 in isolated corners)
+      const noise = [
+        { x: w * 0.14, y: h * 0.20 }, // #20
+        { x: w * 0.16, y: h * 0.82 }, // #21
+        { x: w * 0.52, y: h * 0.18 }, // #22
+        { x: w * 0.88, y: h * 0.82 }  // #23
+      ];
+      noise.forEach((p, idx) => stepperPoints.push({ x: p.x, y: p.y, id: 20 + idx }));
 
       stepperState = {
-        eps: 55,
+        eps: 65,
         minPts: 3,
         currentIndex: 0,
         clusterQueue: [],
@@ -4019,13 +4474,32 @@
         visited: new Array(stepperPoints.length).fill(false),
         cluster: new Array(stepperPoints.length).fill(-1),
         roles: new Array(stepperPoints.length).fill('unvisited'),
-        activeScanPoint: null
+        activeScanPoint: null,
+        scannedCount: 0
       };
 
-      document.getElementById('stepper-log-box').innerHTML = `
-        <div class="step-log-entry active">// SCAN INITIALIZED: READY TO INFILTRATE</div>
-      `;
+      updateStepperHUD('POINT #0', 'SEED DISCOVERY', 'EMPTY', '0 / 2', '0 / 24');
+
+      const logBox = document.getElementById('stepper-log-box');
+      if (logBox) {
+        logBox.innerHTML = `<div class="step-log-entry active">// SCAN INITIALIZED: READY TO INFILTRATE</div>`;
+      }
+
       drawStepperFrame();
+    }
+
+    function updateStepperHUD(curPt, phase, queue, syndicates, scanned) {
+      const elCur = document.getElementById('stepper-cur-pt');
+      const elPhase = document.getElementById('stepper-phase');
+      const elQueue = document.getElementById('stepper-queue');
+      const elSyn = document.getElementById('stepper-syndicates');
+      const elScan = document.getElementById('stepper-scanned');
+
+      if (elCur) elCur.textContent = curPt;
+      if (elPhase) elPhase.textContent = phase;
+      if (elQueue) elQueue.textContent = queue;
+      if (elSyn) elSyn.textContent = syndicates;
+      if (elScan) elScan.textContent = scanned;
     }
 
     function stepAlgorithmForward() {
@@ -4034,6 +4508,7 @@
       const logBox = document.getElementById('stepper-log-box');
 
       function addLog(msg) {
+        if (!logBox) return;
         const entry = document.createElement('div');
         entry.className = 'step-log-entry active';
         entry.textContent = msg;
@@ -4042,22 +4517,30 @@
       }
 
       if (s.status === 'seeking_seed') {
-        while (s.currentIndex < stepperPoints.length && s.visited[s.currentIndex]) s.currentIndex++;
+        while (s.currentIndex < stepperPoints.length && s.visited[s.currentIndex]) {
+          s.currentIndex++;
+        }
+
         if (s.currentIndex >= stepperPoints.length) {
           s.status = 'finished';
-          addLog(`// ALL SECTORS SCANNED. MISSION SUCCESSFUL.`);
-          document.getElementById('heist-stamp-07').classList.add('stamped');
+          s.activeScanPoint = null;
+          addLog('// ALL 24 POINTS SCANNED. MISSION COMPLETE: 2 SYNDICATES SEALED.');
+          const stamp = document.getElementById('heist-stamp-07');
+          if (stamp) stamp.classList.add('stamped');
+          updateStepperHUD('COMPLETE', 'MISSION ACCOMPLISHED', 'EMPTY', '2 / 2', '24 / 24');
           drawStepperFrame();
           return;
         }
 
         const ptIdx = s.currentIndex;
         s.visited[ptIdx] = true;
+        s.scannedCount++;
         s.activeScanPoint = ptIdx;
 
         const neighbors = [];
         for (let i = 0; i < stepperPoints.length; i++) {
-          if (euclideanDistance(stepperPoints[ptIdx], stepperPoints[i]) <= s.eps) neighbors.push(i);
+          const d = Math.hypot(stepperPoints[ptIdx].x - stepperPoints[i].x, stepperPoints[ptIdx].y - stepperPoints[i].y);
+          if (d <= s.eps) neighbors.push(i);
         }
 
         if (neighbors.length >= s.minPts) {
@@ -4065,42 +4548,50 @@
           s.cluster[ptIdx] = s.clusterId;
           s.clusterQueue = [...neighbors];
           s.status = 'expanding';
-          addLog(`// POINT #${ptIdx}: MASTERMIND FOUND (${neighbors.length} crew). EXPANDING SYNDICATE.`);
+          addLog(`// POINT #${ptIdx}: MASTERMIND FOUND (${neighbors.length} crew >= MinPts 3). RECRUITING SYNDICATE ${s.clusterId + 1}.`);
+          updateStepperHUD(`POINT #${ptIdx}`, 'EXPANDING SYNDICATE', `[${s.clusterQueue.map(q => '#' + q).join(', ')}]`, `${s.clusterId} / 2`, `${s.scannedCount} / 24`);
         } else {
           s.roles[ptIdx] = 'noise';
-          addLog(`// POINT #${ptIdx}: INSUFFICIENT CREW. MARKED AS BYSTANDER.`);
+          addLog(`// POINT #${ptIdx}: ONLY ${neighbors.length} CREW (< MinPts 3). MARKED AS BYSTANDER (NOISE).`);
           s.currentIndex++;
+          updateStepperHUD(`POINT #${ptIdx}`, 'SEED DISCOVERY', 'EMPTY', `${s.clusterId} / 2`, `${s.scannedCount} / 24`);
         }
       } else if (s.status === 'expanding') {
         if (s.clusterQueue.length === 0) {
           s.status = 'seeking_seed';
           s.clusterId++;
           s.currentIndex++;
-          addLog(`// CLUSTER BOUNDARY COMPLETED. MOVING TO NEXT SEED.`);
+          addLog(`// SYNDICATE ${s.clusterId} PERIMETER SEALED! SEEKING NEXT UNVISITED SEED.`);
+          updateStepperHUD('SEEKING NEXT SEED', 'SEED DISCOVERY', 'EMPTY', `${s.clusterId} / 2`, `${s.scannedCount} / 24`);
         } else {
           const target = s.clusterQueue.shift();
           s.activeScanPoint = target;
 
           if (!s.visited[target]) {
             s.visited[target] = true;
+            s.scannedCount++;
             const neighbors = [];
             for (let i = 0; i < stepperPoints.length; i++) {
-              if (euclideanDistance(stepperPoints[target], stepperPoints[i]) <= s.eps) neighbors.push(i);
+              const d = Math.hypot(stepperPoints[target].x - stepperPoints[i].x, stepperPoints[target].y - stepperPoints[i].y);
+              if (d <= s.eps) neighbors.push(i);
             }
+
             if (neighbors.length >= s.minPts) {
               s.roles[target] = 'core';
-              addLog(`// RECRUIT #${target} IS A MASTERMIND! EXPANDING SYNDICATE.`);
+              addLog(`// RECRUIT #${target} IS A MASTERMIND (${neighbors.length} crew). QUEUING NEW OPERATIVES.`);
               neighbors.forEach(n => {
                 if (!s.clusterQueue.includes(n)) s.clusterQueue.push(n);
               });
             } else {
               s.roles[target] = 'border';
-              addLog(`// RECRUIT #${target} IS AN ACCOMPLICE ON THE PERIMETER.`);
+              addLog(`// RECRUIT #${target} IS AN ACCOMPLICE (${neighbors.length} crew < 3). PERIMETER SECURED.`);
             }
           }
           if (s.cluster[target] === -1) s.cluster[target] = s.clusterId;
+          updateStepperHUD(`POINT #${target}`, 'RECURSIVE EXPANSION', s.clusterQueue.length > 0 ? `[${s.clusterQueue.map(q => '#' + q).join(', ')}]` : 'EMPTY', `${s.clusterId} / 2`, `${s.scannedCount} / 24`);
         }
       }
+
       drawStepperFrame();
     }
 
@@ -4109,18 +4600,18 @@
       if (stepperPlayInterval) {
         clearInterval(stepperPlayInterval);
         stepperPlayInterval = null;
-        btn.textContent = 'AUTO PLAY';
+        if (btn) btn.textContent = 'AUTO PLAY';
       } else {
-        btn.textContent = 'PAUSE';
+        if (btn) btn.textContent = 'PAUSE';
         stepperPlayInterval = setInterval(() => {
           if (stepperState && stepperState.status === 'finished') {
             clearInterval(stepperPlayInterval);
             stepperPlayInterval = null;
-            btn.textContent = 'AUTO PLAY';
+            if (btn) btn.textContent = 'AUTO PLAY';
           } else {
             stepAlgorithmForward();
           }
-        }, 500);
+        }, 650);
         AnimationManager.trackInterval(stepperPlayInterval);
       }
     }
@@ -4131,42 +4622,185 @@
       const ctx = canvas.getContext('2d');
       const w = canvas.clientWidth, h = canvas.clientHeight;
 
-      ctx.fillStyle = '#0D0D0D';
+      // 1. Clear background
+      ctx.fillStyle = '#080B10';
       ctx.fillRect(0, 0, w, h);
 
-      const s = stepperState;
+      // Subtle tactical grid
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
+      ctx.lineWidth = 1;
+      for (let x = 40; x < w; x += 60) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+      }
+      for (let y = 40; y < h; y += 60) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+      }
 
+      const s = stepperState;
+      if (!s) return;
+
+      const clusterColors = ['#E60012', '#00F0FF', '#FFD700'];
+
+      // 2. Draw density connection lines between points in the same cluster
+      for (let i = 0; i < stepperPoints.length; i++) {
+        if (s.cluster[i] >= 0) {
+          for (let j = i + 1; j < stepperPoints.length; j++) {
+            if (s.cluster[i] === s.cluster[j]) {
+              const d = Math.hypot(stepperPoints[i].x - stepperPoints[j].x, stepperPoints[i].y - stepperPoints[j].y);
+              if (d <= s.eps) {
+                const color = clusterColors[s.cluster[i] % clusterColors.length];
+                ctx.strokeStyle = color + '55';
+                ctx.lineWidth = 1.8;
+                ctx.beginPath();
+                ctx.moveTo(stepperPoints[i].x, stepperPoints[i].y);
+                ctx.lineTo(stepperPoints[j].x, stepperPoints[j].y);
+                ctx.stroke();
+              }
+            }
+          }
+        }
+      }
+
+      // 3. Draw Active Radar Sweep on current active scan point
       if (s.activeScanPoint !== null && stepperPoints[s.activeScanPoint]) {
         const pt = stepperPoints[s.activeScanPoint];
-        ctx.strokeStyle = '#E60012';
-        ctx.fillStyle = 'rgba(230, 0, 18, 0.15)';
+        const isCore = s.roles[s.activeScanPoint] === 'core';
+        const sweepColor = isCore ? '#E60012' : '#FFD700';
+
+        // Glowing radar circle
+        ctx.strokeStyle = sweepColor;
+        ctx.fillStyle = isCore ? 'rgba(230, 0, 18, 0.12)' : 'rgba(255, 215, 0, 0.10)';
         ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.arc(pt.x, pt.y, s.eps, 0, Math.PI * 2);
         ctx.fill();
         ctx.stroke();
+
+        // Laser connection rays to all points inside radius
+        let neighborCount = 0;
+        stepperPoints.forEach((otherPt, oIdx) => {
+          if (oIdx !== s.activeScanPoint) {
+            const d = Math.hypot(pt.x - otherPt.x, pt.y - otherPt.y);
+            if (d <= s.eps) {
+              neighborCount++;
+              ctx.strokeStyle = '#00F0FF';
+              ctx.lineWidth = 1.5;
+              ctx.setLineDash([3, 3]);
+              ctx.beginPath();
+              ctx.moveTo(pt.x, pt.y);
+              ctx.lineTo(otherPt.x, otherPt.y);
+              ctx.stroke();
+              ctx.setLineDash([]);
+
+              // Neighbor highlight ring
+              ctx.strokeStyle = '#00F0FF';
+              ctx.lineWidth = 2;
+              ctx.beginPath();
+              ctx.arc(otherPt.x, otherPt.y, 14, 0, Math.PI * 2);
+              ctx.stroke();
+            }
+          }
+        });
+        neighborCount++; // self count
+
+        // Dynamic floating radar badge
+        const badgeText = `RADAR ε=${s.eps}px: ${neighborCount} CREW [${neighborCount >= s.minPts ? '≥ MinPts 3 → RECRUIT!' : '< 3 → BORDER/NOISE'}]`;
+        ctx.font = 'bold 11px monospace';
+        const btw = ctx.measureText(badgeText).width;
+        const bx = Math.min(pt.x - btw / 2, w - btw - 20);
+        const by = pt.y > 60 ? pt.y - s.eps - 12 : pt.y + s.eps + 24;
+
+        ctx.fillStyle = 'rgba(10, 10, 10, 0.92)';
+        ctx.fillRect(bx - 6, by - 14, btw + 12, 22);
+        ctx.strokeStyle = sweepColor;
+        ctx.lineWidth = 1;
+        ctx.strokeRect(bx - 6, by - 14, btw + 12, 22);
+
+        ctx.fillStyle = sweepColor;
+        ctx.fillText(badgeText, bx, by + 1);
       }
 
+      // 4. Render All 24 Point Badges
       stepperPoints.forEach((p, idx) => {
-        let color = '#444444';
-        if (s.roles[idx] === 'core') color = '#E60012';
-        else if (s.roles[idx] === 'border') color = '#FFFFFF';
-        else if (s.roles[idx] === 'noise') color = 'var(--amber-accent)';
+        const role = s.roles[idx];
+        const cId = s.cluster[idx];
+        const isActive = s.activeScanPoint === idx;
+        const isQueued = s.clusterQueue.includes(idx);
 
-        if (s.activeScanPoint === idx) {
-          ctx.strokeStyle = '#FFF';
-          ctx.lineWidth = 2;
-          ctx.strokeRect(p.x - 7, p.y - 7, 14, 14);
+        let bg = '#1E232E', border = '#556070', textColor = '#FFF';
+
+        if (role === 'core') {
+          bg = cId === 0 ? '#E60012' : '#00F0FF';
+          border = '#FFFFFF';
+          textColor = cId === 0 ? '#FFFFFF' : '#000000';
+        } else if (role === 'border') {
+          bg = '#FFFFFF';
+          border = cId === 0 ? '#E60012' : '#00F0FF';
+          textColor = '#000000';
+        } else if (role === 'noise') {
+          bg = 'rgba(255, 152, 0, 0.2)';
+          border = '#FFAA00';
+          textColor = '#FFAA00';
+        } else if (isQueued) {
+          bg = '#FFAA00';
+          border = '#FFFFFF';
+          textColor = '#000000';
         }
 
-        ctx.fillStyle = color;
-        ctx.fillRect(p.x - 4, p.y - 4, 8, 8);
+        // Draw point badge circle (radius 11px)
+        ctx.fillStyle = bg;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 11, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.strokeStyle = border;
+        ctx.lineWidth = isActive ? 2.5 : 1.5;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 11, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Active scan reticle
+        if (isActive) {
+          ctx.strokeStyle = '#FFFFFF';
+          ctx.lineWidth = 2;
+          ctx.strokeRect(p.x - 15, p.y - 15, 30, 30);
+        }
+
+        // Point Number inside badge
+        ctx.font = 'bold 9.5px monospace';
+        ctx.fillStyle = textColor;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(`#${idx}`, p.x, p.y);
       });
+      ctx.textAlign = 'start';
+      ctx.textBaseline = 'alphabetic';
+
+      // 5. Canvas Header HUD
+      const headerText = `● STEPPER TELEMETRY: SYNDICATE 1 (RED) • SYNDICATE 2 (CYAN) • BYSTANDERS (AMBER)`;
+      ctx.font = 'bold 11px monospace';
+      const htw = ctx.measureText(headerText).width;
+      ctx.fillStyle = 'rgba(10, 10, 10, 0.88)';
+      ctx.fillRect(16, 12, htw + 20, 24);
+      ctx.strokeStyle = 'var(--red-heist)';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(16, 12, htw + 20, 24);
+      ctx.fillStyle = '#00F0FF';
+      ctx.fillText(headerText, 24, 28);
     }
 
+    /* ==========================================================================
+       SLIDE 08: LIVE TACTICAL PLAYGROUND (SANDBOX)
+       Presenter: Lixter Dinawanao (The Tactician)
+       - Presets: Two Moons (120 pts), Rings (150 pts), Blobs + Noise (120 pts)
+       - Interactive Painting: Click to plant target, drag to spray
+       - Live Parameter Tuning: Epsilon (20-90px) & MinPts (2-10)
+       ========================================================================== */
     let sbPoints = [];
-    let sbEps = 42;
+    let sbEps = 54;
     let sbMinPts = 4;
+    let sbHoverX = -1, sbHoverY = -1;
+    let sbIsPainting = false;
     const MAX_SANDBOX_POINTS = 1500;
     let sbDebounceTimer = null;
 
@@ -4178,14 +4812,42 @@
 
       loadSandboxPreset('moons');
 
+      // Click to plant target
       canvas.onmousedown = (e) => {
         if (sbPoints.length >= MAX_SANDBOX_POINTS) return;
+        sbIsPainting = true;
         const rect = canvas.getBoundingClientRect();
         const stage = document.getElementById('deck-stage');
         const scale = stage ? (stage.getBoundingClientRect().width / 1920) : 1;
         sbPoints.push({ x: (e.clientX - rect.left) / scale, y: (e.clientY - rect.top) / scale });
         runAndRenderSandbox();
         triggerPresenterTalk();
+      };
+
+      // Drag to spray & Hover radar sweep
+      canvas.onmousemove = (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const stage = document.getElementById('deck-stage');
+        const scale = stage ? (stage.getBoundingClientRect().width / 1920) : 1;
+        sbHoverX = (e.clientX - rect.left) / scale;
+        sbHoverY = (e.clientY - rect.top) / scale;
+
+        if (sbIsPainting && sbPoints.length < MAX_SANDBOX_POINTS) {
+          // Avoid duplicate points too close
+          const last = sbPoints[sbPoints.length - 1];
+          if (!last || Math.hypot(last.x - sbHoverX, last.y - sbHoverY) > 16) {
+            sbPoints.push({ x: sbHoverX, y: sbHoverY });
+          }
+        }
+        runAndRenderSandbox();
+      };
+
+      canvas.onmouseup = () => { sbIsPainting = false; };
+      canvas.onmouseleave = () => {
+        sbIsPainting = false;
+        sbHoverX = -1;
+        sbHoverY = -1;
+        runAndRenderSandbox();
       };
     }
 
@@ -4195,11 +4857,33 @@
       if (activeBtn) activeBtn.classList.add('active');
 
       const canvas = document.getElementById('canvas-sandbox');
-      const w = canvas.clientWidth, h = canvas.clientHeight;
+      const w = canvas.clientWidth || 1200;
+      const h = canvas.clientHeight || 700;
 
-      if (type === 'moons') sbPoints = generateTwoMoons(90, w, h);
-      else if (type === 'rings') sbPoints = generateConcentricRings(90, w, h);
-      else if (type === 'blobs') sbPoints = generateBlobsWithNoise(90, w, h);
+      if (type === 'moons') {
+        sbEps = 54;
+        sbMinPts = 4;
+        sbPoints = generateTwoMoons(120, w, h);
+      } else if (type === 'rings') {
+        sbEps = 50;
+        sbMinPts = 4;
+        sbPoints = generateConcentricRings(150, w, h);
+      } else if (type === 'blobs') {
+        sbEps = 46;
+        sbMinPts = 4;
+        sbPoints = generateBlobsWithNoise(120, w, h);
+      }
+
+      // Update Slider Elements
+      const sliderEps = document.getElementById('sb-eps');
+      const pillEps = document.getElementById('sb-eps-val');
+      const sliderMin = document.getElementById('sb-minpts');
+      const pillMin = document.getElementById('sb-minpts-val');
+
+      if (sliderEps) sliderEps.value = sbEps;
+      if (pillEps) pillEps.textContent = `${sbEps} px`;
+      if (sliderMin) sliderMin.value = sbMinPts;
+      if (pillMin) pillMin.textContent = sbMinPts;
 
       runAndRenderSandbox();
     }
@@ -4225,14 +4909,31 @@
       const ctx = canvas.getContext('2d');
       const w = canvas.clientWidth, h = canvas.clientHeight;
 
-      ctx.fillStyle = '#0D0D0D';
+      // 1. Dark Noir Background
+      ctx.fillStyle = '#080B10';
       ctx.fillRect(0, 0, w, h);
 
-      if (sbPoints.length === 0) return;
+      // Grid
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
+      ctx.lineWidth = 1;
+      for (let x = 40; x < w; x += 60) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+      }
+      for (let y = 40; y < h; y += 60) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+      }
+
+      if (sbPoints.length === 0) {
+        ctx.font = 'bold 14px monospace';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.35)';
+        ctx.fillText('CANVAS IS EMPTY. CLICK PRESET BUTTON OR CLICK & DRAG TO PLANT TARGETS.', 40, h / 2);
+        return;
+      }
 
       const res = runDBSCANAccelerated(sbPoints, sbEps, sbMinPts);
-      const clusterPalette = ['#E60012', '#FFFFFF', '#00F0FF', '#FFD700', '#FF007F'];
+      const clusterPalette = ['#E60012', '#00F0FF', '#FFD700', '#00E676', '#FF007F', '#9C27B0'];
 
+      // 2. Draw density network webbing
       const grid = new SpatialGrid(sbPoints, sbEps);
       for (let i = 0; i < sbPoints.length; i++) {
         if (res.pointTypes[i] === 'core') {
@@ -4240,8 +4941,9 @@
           for (let j = 0; j < neighbors.length; j++) {
             const nIdx = neighbors[j];
             if (nIdx > i && res.clusterAssignment[i] === res.clusterAssignment[nIdx]) {
-              ctx.strokeStyle = 'rgba(230, 0, 18, 0.35)';
-              ctx.lineWidth = 1;
+              const color = clusterPalette[res.clusterAssignment[i] % clusterPalette.length];
+              ctx.strokeStyle = color + '55';
+              ctx.lineWidth = 1.2;
               ctx.beginPath();
               ctx.moveTo(sbPoints[i].x, sbPoints[i].y);
               ctx.lineTo(sbPoints[nIdx].x, sbPoints[nIdx].y);
@@ -4251,33 +4953,105 @@
         }
       }
 
+      // 3. Render Points
       sbPoints.forEach((p, idx) => {
         const cId = res.clusterAssignment[idx];
         const role = res.pointTypes[idx];
 
         if (cId === -1) {
-          ctx.fillStyle = 'var(--amber-accent)';
-          ctx.fillRect(p.x - 3.5, p.y - 3.5, 7, 7);
-          ctx.strokeStyle = '#E60012';
-          ctx.lineWidth = 1;
+          // Noise / Bystander
+          ctx.strokeStyle = '#FFAA00';
+          ctx.lineWidth = 1.5;
           ctx.beginPath();
-          ctx.moveTo(p.x - 5, p.y - 5);
-          ctx.lineTo(p.x + 5, p.y + 5);
+          ctx.moveTo(p.x - 4.5, p.y - 4.5); ctx.lineTo(p.x + 4.5, p.y + 4.5);
+          ctx.moveTo(p.x + 4.5, p.y - 4.5); ctx.lineTo(p.x - 4.5, p.y + 4.5);
           ctx.stroke();
         } else {
-          ctx.fillStyle = clusterPalette[cId % clusterPalette.length];
+          const color = clusterPalette[cId % clusterPalette.length];
+          ctx.fillStyle = color;
           if (role === 'core') {
             ctx.fillRect(p.x - 5, p.y - 5, 10, 10);
-            ctx.strokeStyle = '#000';
-            ctx.lineWidth = 1.5;
+            ctx.strokeStyle = '#FFFFFF';
+            ctx.lineWidth = 1;
             ctx.strokeRect(p.x - 5, p.y - 5, 10, 10);
           } else {
+            // Border point
             ctx.fillRect(p.x - 3.5, p.y - 3.5, 7, 7);
           }
         }
       });
-    }
 
+      // 4. Hover Radar Sweep on mouse
+      if (sbHoverX > 0 && sbHoverY > 0) {
+        ctx.strokeStyle = '#00F0FF';
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([4, 4]);
+        ctx.beginPath();
+        ctx.arc(sbHoverX, sbHoverY, sbEps, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Center crosshair
+        ctx.strokeStyle = '#FFF';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(sbHoverX - 6, sbHoverY); ctx.lineTo(sbHoverX + 6, sbHoverY);
+        ctx.moveTo(sbHoverX, sbHoverY - 6); ctx.lineTo(sbHoverX, sbHoverY + 6);
+        ctx.stroke();
+
+        let detected = 0;
+        sbPoints.forEach(p => {
+          if (Math.hypot(p.x - sbHoverX, p.y - sbHoverY) <= sbEps) {
+            detected++;
+            ctx.strokeStyle = '#FFFFFF';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, 8, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+        });
+
+        const isCore = detected >= sbMinPts;
+        const tip = `RADAR ε [${sbEps}px]: ${detected} PTS [${isCore ? `CORE: ≥ ${sbMinPts}` : `SPARSE / NOISE: < ${sbMinPts}`}]`;
+        ctx.font = 'bold 11px monospace';
+        const tw = ctx.measureText(tip).width;
+        const tx = Math.min(sbHoverX + 16, w - tw - 24);
+        const ty = sbHoverY > 40 ? sbHoverY - 14 : sbHoverY + 28;
+
+        ctx.fillStyle = 'rgba(10, 10, 10, 0.92)';
+        ctx.fillRect(tx - 6, ty - 14, tw + 12, 22);
+        ctx.strokeStyle = isCore ? '#00F0FF' : '#FFAA00';
+        ctx.strokeRect(tx - 6, ty - 14, tw + 12, 22);
+        ctx.fillStyle = isCore ? '#00F0FF' : '#FFD700';
+        ctx.fillText(tip, tx, ty + 1);
+      }
+
+      // 5. Canvas HUD Overlay
+      const cores = res.pointTypes.filter(t => t === 'core').length;
+      const borders = res.pointTypes.filter(t => t === 'border').length;
+      const noise = res.pointTypes.filter(t => t === 'noise').length;
+      const hudText = `● LIVE DBSCAN ENGINE | SYNDICATES: ${res.totalClusters} | CORES: ${cores} | BORDER: ${borders} | NOISE: ${noise}`;
+
+      ctx.font = 'bold 11px monospace';
+      const htw = ctx.measureText(hudText).width;
+      ctx.fillStyle = 'rgba(10, 10, 10, 0.90)';
+      ctx.fillRect(16, 12, htw + 20, 24);
+      ctx.strokeStyle = 'var(--red-heist)';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(16, 12, htw + 20, 24);
+      ctx.fillStyle = '#00F0FF';
+      ctx.fillText(hudText, 24, 28);
+
+      // Sub-instruction on canvas bottom-right
+      const instr = '[ CLICK CANVAS TO ADD POINT // DRAG TO SPRAY // HOVER FOR RADAR ]';
+      const itw = ctx.measureText(instr).width;
+      ctx.fillStyle = 'rgba(10, 10, 10, 0.85)';
+      ctx.fillRect(w - itw - 30, h - 34, itw + 16, 22);
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+      ctx.strokeRect(w - itw - 30, h - 34, itw + 16, 22);
+      ctx.fillStyle = '#AAA';
+      ctx.fillText(instr, w - itw - 22, h - 19);
+    }
     function renderSlide9BattleDiagram() {
       const canvas = document.getElementById('canvas-battle-diagram');
       if (!canvas) return;
