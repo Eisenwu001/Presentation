@@ -1739,135 +1739,241 @@ Topic One is entitled: 'BinSnap: Crowdsourcing Illegal Dumping Reports and Capac
       </div>
     </section>
 
-    <!-- ==================== BINSNAP SLIDE 02: ILLEGAL DUMPING IN BARANGAY 399 ==================== -->
+        <!-- ==================== BINSNAP SLIDE 02: PROBLEM-SOLUTION BRIDGE ==================== -->
+        <!-- ==================== BINSNAP SLIDE 02: METRO MANILA URBAN SOLID WASTE CRISIS ==================== -->
+        <!-- ==================== BINSNAP SLIDE 02: OVERALL PROBLEM & COMPUTATIONAL SOLUTION ==================== -->
     <section class="slide-view" id="binsnap-02" data-slide="2" data-presenter="lixter">
       <div class="slide-header-zone">
         <div class="title-row">
-          <div class="title-white-tag">BARANGAY 399:</div>
-          <div class="title-red-tag">ILLEGAL DUMPING IN BARANGAY 399</div>
+          <div class="title-white-tag">METRO MANILA:</div>
+          <div class="title-red-tag">URBAN SOLID WASTE CRISIS &amp; COMPUTATIONAL SOLUTION</div>
         </div>
-        <div class="slide-subtitle-text" data-source="Section 1 & Title Page" data-purpose="Context and Municipal Motivation">
-          Municipal solid waste budget burden, MRF infrastructure deficit, and chronic morning street dumping
+        <div class="slide-subtitle-text" data-source="Ch. 1 Background &amp; Ch. 2 Literature Review" data-purpose="Macro Problem &amp; Solution Bridge">
+          The municipal solid waste breakdown across Manila paired directly with BinSnap's end-to-end software intervention
         </div>
       </div>
-      <div class="slide-content-zone" style="display: flex; flex-direction: column; gap: 16px;">
-        <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 24px; flex: 1;">
-          <!-- Left: 3 Bento Cards -->
-          <div style="display: flex; flex-direction: column; gap: 12px; justify-content: space-between;">
-            <div class="bento-card border-red" style="padding: 16px;">
-              <div class="card-kicker-red">01 // MUNICIPAL BUDGET BURDEN</div>
-              <div class="card-body-text">
-                Local governments expend between <strong>20% and 50% of annual municipal budgets</strong> on solid waste management (Domingo & Manejar, 2021). Manila City hauling contracts exceed ₱842M annually.
+      <div class="slide-content-zone" style="display: flex; flex-direction: column; gap: 12px;">
+        <!-- Top Macro Stat Strip -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px;">
+          <div class="bento-card border-white" style="padding: 8px 16px; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.75);">
+            <div style="font-family: var(--font-display); font-size: 26px; color: var(--red-primary); line-height: 1;">20–50%</div>
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gray-secondary); text-align: right; line-height: 1.3;">
+              MUNICIPAL BUDGET ON WASTE<br><span style="color:#fff;">Domingo &amp; Manejar, 2021</span>
+            </div>
+          </div>
+          <div class="bento-card border-white" style="padding: 8px 16px; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.75);">
+            <div style="font-family: var(--font-display); font-size: 26px; color: #fff; line-height: 1;">3 MRFs</div>
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gray-secondary); text-align: right; line-height: 1.3;">
+              FACILITIES FOR 897 BRGYS<br><span style="color:#fff;">World Bank, 2022</span>
+            </div>
+          </div>
+          <div class="bento-card border-white" style="padding: 8px 16px; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.75);">
+            <div style="font-family: var(--font-display); font-size: 26px; color: var(--red-primary); line-height: 1;">₱842M+</div>
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gray-secondary); text-align: right; line-height: 1.3;">
+              MANILA HAULING CONTRACTS<br><span style="color:#fff;">Annual City Expenditure</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2-Column Comparative Matrix: Overall Problem vs BinSnap Solution -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; flex: 1;">
+          <!-- Left: 3 Overall Problems -->
+          <div style="display: flex; flex-direction: column; gap: 8px; justify-content: space-between;">
+            <div class="bento-card border-red" style="padding: 12px 16px; background: rgba(20,8,8,0.92); flex: 1; display: flex; flex-direction: column; justify-content: center;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                <div class="card-kicker-red" style="font-size: 13px;">01 // MUNICIPAL BUDGET DRAIN &amp; UNMONITORED WASTE</div>
+                <span class="meta-tag" style="background: rgba(230,0,18,0.25); color: var(--red-primary); font-size: 10px;">MACRO BURDEN</span>
+              </div>
+              <div class="card-body-text" style="font-size: 16px; line-height: 1.35;">
+                Local governments expend <strong>20% to 50% of annual budgets</strong> on waste (Domingo &amp; Manejar, 2021). Manila City contracts exceed <strong>₱842M</strong>, yet unmonitored street dumping persists without real-time tracking.
               </div>
             </div>
-            <div class="bento-card border-red" style="padding: 16px;">
-              <div class="card-kicker-red">02 // MRF INFRASTRUCTURE DEFICIT</div>
-              <div class="card-body-text">
-                World Bank (2022) notes Manila operates only <strong>3 Materials Recovery Facilities</strong> across 897 barangays, leaving local units without localized sorting or recovery capacity.
+            <div class="bento-card border-red" style="padding: 12px 16px; background: rgba(20,8,8,0.92); flex: 1; display: flex; flex-direction: column; justify-content: center;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                <div class="card-kicker-red" style="font-size: 13px;">02 // MRF DEFICIT &amp; PUBLIC RECEPTACLE ABSENCE</div>
+                <span class="meta-tag" style="background: rgba(230,0,18,0.25); color: var(--red-primary); font-size: 10px;">INFRASTRUCTURE</span>
+              </div>
+              <div class="card-body-text" style="font-size: 16px; line-height: 1.35;">
+                Manila operates <strong>only 3 MRFs for 897 barangays</strong> (World Bank, 2022). With street bins removed to deter scavenging, residents discard trash onto sidewalks, forming informal open heaps (Coracero et al., 2021).
               </div>
             </div>
-            <div class="bento-card border-red" style="padding: 16px;">
-              <div class="card-kicker-red">03 // DORMITORY DENSITY & UNVERIFIED DUMPING</div>
-              <div class="card-body-text">
-                Barangay 399 houses 2,500–3,000 residents in student dormitories, causing chronic early-morning street dumping along M.V. Delos Santos Street that overwhelms manual complaint logs.
+            <div class="bento-card border-red" style="padding: 12px 16px; background: rgba(20,8,8,0.92); flex: 1; display: flex; flex-direction: column; justify-content: center;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                <div class="card-kicker-red" style="font-size: 13px;">03 // BLIND TRUCK DISPATCH &amp; RECONNAISSANCE DRAIN</div>
+                <span class="meta-tag" style="background: rgba(230,0,18,0.25); color: var(--red-primary); font-size: 10px;">DISPATCH FAILURE</span>
+              </div>
+              <div class="card-body-text" style="font-size: 16px; line-height: 1.35;">
+                Barangay halls handle unverified complaints manually, forcing tanods to walk streets for verification. Trucks run blind static routes, overflowing prematurely while canal-blocking heaps remain uncollected.
               </div>
             </div>
           </div>
-          <!-- Right: 3 Giant Stat Cards -->
-          <div style="display: flex; flex-direction: column; gap: 12px; justify-content: space-between;">
-            <div class="bento-card border-red" style="padding: 16px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
-              <div style="display: flex; justify-content: space-between; align-items: baseline;">
-                <div style="font-family: var(--font-display); font-size: 68px; color: var(--red-primary); line-height: 1;">20–50%</div>
-                <div class="meta-tag">Domingo & Manejar, 2021</div>
+
+          <!-- Right: 3 BinSnap Computational Solutions -->
+          <div style="display: flex; flex-direction: column; gap: 8px; justify-content: space-between;">
+            <div class="bento-card border-white" style="padding: 12px 16px; background: rgba(18,22,28,0.95); flex: 1; display: flex; flex-direction: column; justify-content: center;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                <div class="card-kicker-tag" style="color: var(--amber-accent); font-size: 13px;">[SOL 01] // STANDARDIZED MOBILE TELEMETRY (PWA)</div>
+                <span class="meta-tag" style="background: rgba(255,191,0,0.15); color: var(--amber-accent); font-size: 10px;">CITIZEN INTAKE</span>
               </div>
-              <div class="card-body-text" style="font-size: 20px; margin-top: 6px;">
-                Share of Philippine local government budgets consumed by solid waste services.
-              </div>
-            </div>
-            <div class="bento-card border-white" style="padding: 16px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
-              <div style="display: flex; justify-content: space-between; align-items: baseline;">
-                <div style="font-family: var(--font-display); font-size: 68px; color: #fff; line-height: 1;">3 MRFs</div>
-                <div class="meta-tag">World Bank, 2022</div>
-              </div>
-              <div class="card-body-text" style="font-size: 20px; margin-top: 6px;">
-                Materials Recovery Facilities operating across 897 barangays in Manila.
+              <div class="card-body-text" style="font-size: 16px; line-height: 1.35;">
+                In-browser Progressive Web App gives residents a <strong>15-second reporting flow with an on-screen camera reticle and GPS bounds</strong>, turning citizens into real-time urban telemetry nodes.
               </div>
             </div>
-            <div class="bento-card border-red" style="padding: 16px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
-              <div style="display: flex; justify-content: space-between; align-items: baseline;">
-                <div style="font-family: var(--font-display); font-size: 68px; color: var(--red-primary); line-height: 1;">₱842M+</div>
-                <div class="meta-tag">Manila City Waste Hauling</div>
+            <div class="bento-card border-white" style="padding: 12px 16px; background: rgba(18,22,28,0.95); flex: 1; display: flex; flex-direction: column; justify-content: center;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                <div class="card-kicker-tag" style="color: var(--amber-accent); font-size: 13px;">[SOL 02] // 5-LAYER AUTOMATED VERIFICATION &amp; pHASH</div>
+                <span class="meta-tag" style="background: rgba(255,191,0,0.15); color: var(--amber-accent); font-size: 10px;">DATA CLEANSING</span>
               </div>
-              <div class="card-body-text" style="font-size: 20px; margin-top: 6px;">
-                Annual citywide solid waste collection and private hauling contract expenditure.
+              <div class="card-body-text" style="font-size: 16px; line-height: 1.35;">
+                Automated pipeline eliminates duplicate photo angles via <strong>perceptual hashing (pHash distance ≤ 10)</strong> and verifies waste presence with computer vision, eliminating manual tanod inspection trips.
+              </div>
+            </div>
+            <div class="bento-card border-white" style="padding: 12px 16px; background: rgba(18,22,28,0.95); flex: 1; display: flex; flex-direction: column; justify-content: center;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                <div class="card-kicker-tag" style="color: var(--amber-accent); font-size: 13px;">[SOL 03] // DBSCAN CLUSTERING &amp; OR-TOOLS CVRPTW</div>
+                <span class="meta-tag" style="background: rgba(255,191,0,0.15); color: var(--amber-accent); font-size: 10px;">DISPATCH ENGINE</span>
+              </div>
+              <div class="card-body-text" style="font-size: 16px; line-height: 1.35;">
+                DBSCAN groups reports into hotspots (ε = 29m, MinPts = 2). Priority score <strong>P = 0.35Vn + 0.25H + 0.25D + 0.15A</strong> prioritizes drainage hazards, while Google OR-Tools optimizes routes within truck limits.
               </div>
             </div>
           </div>
         </div>
-        <!-- Bottom Slanted Band -->
-        <div class="slanted-red-band" style="background: var(--red-primary); color: #fff; padding: 10px 24px; font-family: var(--font-display); font-size: 19px; letter-spacing: 2px; transform: skewX(-8deg); margin-top: 4px;">
+
+        <!-- Bottom Slanted Alert Band -->
+        <div class="slanted-red-band" style="background: var(--red-primary); color: #fff; padding: 8px 24px; font-family: var(--font-display); font-size: 17px; letter-spacing: 2px; transform: skewX(-8deg); margin-top: 2px;">
           <span style="display: inline-block; transform: skewX(8deg);">
-            RIGID SWEEPING SCHEDULES LEAVE STREET PILES UNCOLLECTED FOR UP TO 3 DAYS ALONG M.V. DELOS SANTOS STREET.
+            TRANSFORMING UNMONITORED STREET HEAPS INTO VERIFIED, CAPACITY-CONSTRAINED MUNICIPAL CLEANUP ROUTES.
           </span>
         </div>
       </div>
       <div class="speaker-note-text" style="display:none;">
-Solid waste is a heavy financial burden for Philippine cities. Sourced studies by Domingo and Manejar show that local governments spend 20 to 50 percent of their entire annual budget on garbage services. In Manila alone, hauling contracts cost over 842 million pesos every year. > Even with that budget, there is a serious lack of facilities. The World Bank notes that Manila has only 3 Materials Recovery Facilities across 897 barangays. > In Barangay 399, Zone 41, over 2,500 students live in private dormitories. Because classes start early, students discard trash on sidewalks before official pickup times, especially along M.V. Delos Santos Street. Barangay officials currently rely on verbal complaints and Facebook messages, which leads to major delays.
+Solid waste is one of the most severe financial and operational crises facing Philippine cities today. Local government units spend between 20 to 50 percent of their entire annual municipal budgets on garbage services, with Manila spending over 842 million pesos annually on private hauling. Yet despite this massive budget, urban streets remain plagued by recurring trash piles because of an extreme infrastructure deficit: Manila operates only 3 Materials Recovery Facilities for 897 barangays, and public bins were removed to deter scavenging. Barangay halls are flooded with unverified complaints, while collection trucks follow blind routes with no visibility into pile volume or flood hazards. BinSnap directly solves this breakdown through three computational pillars: first, a lightweight Progressive Web App allows residents to geotag street piles in 15 seconds; second, an automated 5-layer verification pipeline filters duplicate photos and validates waste with computer vision; and third, DBSCAN spatial clustering and Google OR-Tools schedule optimal truck routes that prioritize drainage hazard zones before vehicle capacity runs out.
       </div>
     </section>
 
-    <section class="slide-view" id="binsnap-03" data-slide="3">
+
+
+
+        <!-- ==================== BINSNAP SLIDE 03: DAWN DUMPING & TEMPORAL MISMATCH ==================== -->
+    <section class="slide-view" id="binsnap-03" data-slide="3" data-presenter="lixter">
       <div class="slide-header-zone">
         <div class="title-row">
-          <div class="title-white-tag">COLLECTION SCHEDULE:</div>
-          <div class="title-red-tag">DAWN DUMPING BEFORE THE SWEEP</div>
+          <div class="title-white-tag">BARANGAY 399:</div>
+          <div class="title-red-tag">DAWN DUMPING &amp; TEMPORAL MISMATCH</div>
         </div>
-        <div class="slide-subtitle-text" data-source="Ch. 1 Problems and Opportunities &amp; Appendix A" data-purpose="Context and Motivation">
-          Move the clock and the days uncollected to see how piles outlast the schedule.
+        <div class="slide-subtitle-text" data-source="Ch. 1 Problems and Opportunities &amp; Appendix A" data-purpose="Collection Timing &amp; Drainage Risk">
+          The 24-hour cycle along M.V. Delos Santos Street: why rigid municipal sweeping misses peak dumping and causes 3-day lingering
         </div>
       </div>
-      <div class="slide-content-zone" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px;">
-        <div class="bento-card border-red" style="padding: 18px 22px; display: flex; flex-direction: column; justify-content: space-between;" data-source="Ch. 1 Problems and Opportunities &amp; Appendix A" data-purpose="Collection Timing">
+      <div class="slide-content-zone" style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 24px;">
+        <!-- Left: 24-Hour Street Clock & Timeline Track -->
+        <div class="bento-card border-red" style="padding: 16px 20px; display: flex; flex-direction: column; justify-content: space-between;" data-source="Ch. 1 Problems and Opportunities &amp; Appendix A" data-purpose="Collection Timing">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <div class="card-kicker-tag">24-HOUR STREET CLOCK // M.V. DELOS SANTOS ST.</div>
-            <span class="meta-tag" style="background: var(--red-primary); color: #fff;">ILLUSTRATIVE SCHEDULE, NOT STUDY RESULTS</span>
+            <span class="meta-tag" style="background: var(--red-primary); color: #fff;">INTERACTIVE CYCLE SIMULATOR</span>
           </div>
-          <div class="dump-track" id="dump-track">
-            <div class="dump-zone" style="left: 0; width: 16.667%;"></div>
-            <div class="dump-mark" style="left: 16.667%;"><span>4:00 AM<br>SWEEP</span></div>
-            <div class="dump-mark" style="left: 29.167%;"><span>7:00 AM<br>COLLECTION</span></div>
-            <div class="dump-mark" style="left: 83.333%;"><span>8:00 PM<br>COLLECTION</span></div>
-            <div class="dump-cursor" id="dump-cursor"></div>
+
+          <!-- Enhanced Visual Track -->
+          <div class="dump-track" id="dump-track" style="height: 125px; position: relative; background: #08080c; border: 1px solid var(--gray-dark); margin: 10px 0; overflow: hidden;">
+            <!-- Zone 1: 00:00 - 04:00 (Overnight residual) -->
+            <div style="position: absolute; left: 0; width: 16.667%; top: 0; bottom: 0; background: rgba(255,255,255,0.02); border-right: 1px dashed var(--gray-dark);">
+              <span style="position: absolute; bottom: 6px; left: 6px; font-family: var(--font-mono); font-size: 11px; color: var(--gray-secondary);">00:00-04:00<br>NIGHT</span>
+            </div>
+            <!-- Marker: 04:00 AM (Street Sweeper) -->
+            <div class="dump-mark" style="left: 16.667%; border-left: 2px dashed #00e5ff; z-index: 2;">
+              <span style="color: #00e5ff; font-weight: 700; top: 6px;">4:00 AM<br>SWEEP</span>
+            </div>
+            <!-- Zone 2: 05:00 - 07:00 (DAWN DUMPING SPIKE) -->
+            <div class="dump-zone" style="left: 20.833%; width: 8.334%; background: rgba(230,0,18,0.35); border-left: 2px solid var(--red-primary); border-right: 2px dashed var(--red-primary); z-index: 1;">
+              <span style="position: absolute; top: 38px; left: 4px; font-family: var(--font-mono); font-size: 10px; color: #ff8888; font-weight: 800; text-transform: uppercase; line-height: 1.1;">DAWN<br>SPIKE</span>
+            </div>
+            <!-- Marker: 07:00 AM (City Collection 1) -->
+            <div class="dump-mark" style="left: 29.167%; border-left: 2px solid #fff; z-index: 2;">
+              <span style="color: #fff; font-weight: 700; top: 6px;">7:00 AM<br>TRUCK 1</span>
+            </div>
+            <!-- Zone 3: 07:30 - 20:00 (Daytime Decay & Scavengers) -->
+            <div style="position: absolute; left: 29.167%; width: 54.166%; top: 0; bottom: 0; background: rgba(255,191,0,0.06); border-right: 1px dashed var(--gray-dark); z-index: 1;">
+              <span style="position: absolute; bottom: 6px; left: 10px; font-family: var(--font-mono); font-size: 11px; color: var(--amber-accent);">08:00 - 18:00 // DAY ACCUMULATION &amp; SCAVENGER DISPERSAL</span>
+            </div>
+            <!-- Marker: 20:00 PM (City Collection 2) -->
+            <div class="dump-mark" style="left: 83.333%; border-left: 2px solid #fff; z-index: 2;">
+              <span style="color: #fff; font-weight: 700; top: 6px;">8:00 PM<br>TRUCK 2</span>
+            </div>
+            <!-- Moving Cursor -->
+            <div class="dump-cursor" id="dump-cursor" style="position: absolute; top: 0; bottom: 0; width: 4px; margin-left: -2px; background: var(--amber-accent); box-shadow: 0 0 14px var(--amber-accent); z-index: 5;">
+              <div style="width: 10px; height: 10px; background: var(--amber-accent); border-radius: 50%; position: absolute; top: -2px; left: -3px;"></div>
+            </div>
           </div>
-          <div style="display: flex; align-items: center; gap: 16px;">
-            <div style="font-family: var(--font-display); font-size: 56px; color: var(--red-primary); min-width: 210px;" id="dump-clock">12:00 PM</div>
+
+          <!-- Clock and Slider Controls -->
+          <div style="display: flex; align-items: center; gap: 16px; margin: 4px 0;">
+            <div style="font-family: var(--font-display); font-size: 52px; color: var(--red-primary); min-width: 200px; line-height: 1;" id="dump-clock">12:00 PM</div>
             <input type="range" id="dump-hour" min="0" max="24" step="0.25" value="12" style="flex: 1;" oninput="updateDumpClock()">
-            <button class="deck-nav-btn" id="dump-play" onclick="playDumpClock()" style="padding: 6px 16px; font-size: 13px;">REPLAY 24 HOURS</button>
           </div>
-          <div style="display: flex; align-items: center; gap: 16px;">
-            <div class="meta-tag" style="min-width: 210px;">DAYS UNCOLLECTED: <span id="dump-days-val" style="color: var(--red-primary); font-weight: 800;">0</span></div>
+
+          <!-- Days Uncollected Slider -->
+          <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 8px;">
+            <div class="meta-tag" style="min-width: 200px; font-size: 13px;">DAYS UNCOLLECTED: <span id="dump-days-val" style="color: var(--red-primary); font-weight: 800; font-size: 16px;">0</span></div>
             <input type="range" id="dump-days" min="0" max="3" step="1" value="0" style="flex: 1;" oninput="updateDumpClock()">
           </div>
+
+          <!-- Scenario Quick Presets -->
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button class="deck-nav-btn" onclick="setDumpScenario(4, 0)" style="padding: 4px 10px; font-size: 11px;">04:00 AM SWEEP</button>
+            <button class="deck-nav-btn" onclick="setDumpScenario(6, 0)" style="padding: 4px 10px; font-size: 11px; border-color: var(--red-primary); color: var(--red-primary);">06:00 AM DAWN DUMP</button>
+            <button class="deck-nav-btn" onclick="setDumpScenario(7, 0)" style="padding: 4px 10px; font-size: 11px;">07:00 AM TRUCK</button>
+            <button class="deck-nav-btn" onclick="setDumpScenario(15, 1)" style="padding: 4px 10px; font-size: 11px; border-color: var(--amber-accent); color: var(--amber-accent);">DAY 1 DECAY</button>
+            <button class="deck-nav-btn" onclick="setDumpScenario(6, 3)" style="padding: 4px 10px; font-size: 11px; border-color: var(--red-primary); background: rgba(230,0,18,0.2);">DAY 3 CANAL CRISIS</button>
+            <button class="deck-nav-btn" id="dump-play" onclick="playDumpClock()" style="padding: 4px 12px; font-size: 11px; margin-left: auto;">▶ REPLAY 24H</button>
+          </div>
         </div>
-        <div style="display: flex; flex-direction: column; gap: 14px; justify-content: space-between;">
-          <div class="bento-card border-white" style="padding: 16px 20px;" data-source="Ch. 1 Problems and Opportunities &amp; Appendix A" data-purpose="Collection Timing">
-            <div class="card-kicker-tag">CLOCK STATUS</div>
-            <div class="card-body-text" id="dump-status" style="font-size: 24px; margin-top: 6px;"></div>
+
+        <!-- Right: Dynamic Real-Time Street State HUD -->
+        <div style="display: flex; flex-direction: column; gap: 12px; justify-content: space-between;">
+          <!-- Phase Card -->
+          <div class="bento-card border-white" style="padding: 14px 18px;" data-source="Ch. 1 Problems and Opportunities &amp; Appendix A" data-purpose="Collection Timing">
+            <div class="card-kicker-tag">OPERATIONAL PHASE &amp; FIELD DYNAMICS</div>
+            <div id="dump-phase-title" style="font-family: var(--font-display); font-size: 22px; color: var(--red-primary); margin-top: 4px; letter-spacing: 1px;">
+              DAWN DUMPING SPIKE (05:00 - 06:30 AM)
+            </div>
+            <div class="card-body-text" id="dump-status" style="font-size: 17px; margin-top: 6px; line-height: 1.35;">
+              Residents discard bags during early morning departures. The 4:00 AM sweeper has already left, so piles remain exposed.
+            </div>
           </div>
-          <div class="bento-card border-red" style="padding: 16px 20px;" data-source="Ch. 1 Problems and Opportunities" data-purpose="Delayed Collection">
-            <div class="card-kicker-tag">STREET PILE</div>
-            <div class="dump-bar"><div id="dump-bar-fill"></div></div>
-            <div class="card-body-text" id="dump-pile" style="font-size: 24px; margin-top: 8px;"></div>
+
+          <!-- Street Telemetry & Hazard Card -->
+          <div class="bento-card border-red" style="padding: 14px 18px;" data-source="Ch. 1 Problems and Opportunities" data-purpose="Delayed Collection">
+            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+              <div class="card-kicker-tag">STREET ACCUMULATION &amp; TRUCK CAPACITY</div>
+              <div id="dump-vol-val" style="font-family: var(--font-display); font-size: 24px; color: var(--amber-accent);">2.8 m³</div>
+            </div>
+            <!-- Progress Bar -->
+            <div class="dump-bar" style="height: 14px; background: #000; border: 1px solid var(--gray-dark); margin: 6px 0;">
+              <div id="dump-bar-fill" style="height: 100%; width: 56%; background: var(--amber-accent); transition: width 0.3s ease, background 0.3s ease;"></div>
+            </div>
+            <div class="card-body-text" id="dump-pile" style="font-size: 16px; margin-top: 4px; line-height: 1.3;">
+              56% of Mini Dump Truck capacity (4–5 m³ limit).
+            </div>
+            <!-- Canal Hazard Line -->
+            <div id="dump-hazard-line" style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.1); font-family: var(--font-mono); font-size: 14px; color: #ff5555; font-weight: 700;">
+              ⚠ CANAL HAZARD: Curb gutters obstructed along M.V. Delos Santos St.
+            </div>
           </div>
-          <div style="background: var(--red-primary); padding: 12px 20px; transform: skewX(-10deg); box-shadow: 6px 6px 0 rgba(0,0,0,0.6);" data-source="Ch. 1 Problems and Opportunities &amp; Appendix A" data-purpose="Context and Motivation">
-            <div style="font-family: var(--font-body); font-size: 24px; font-weight: 700; color: #fff; transform: skewX(10deg); text-align: center;">Delayed collection leaves street piles for up to 3 days.</div>
+
+          <!-- Bottom Slanted Callout -->
+          <div style="background: var(--red-primary); padding: 10px 18px; transform: skewX(-10deg); box-shadow: 6px 6px 0 rgba(0,0,0,0.6);" data-source="Ch. 1 Problems and Opportunities &amp; Appendix A" data-purpose="Context and Motivation">
+            <div style="font-family: var(--font-body); font-size: 20px; font-weight: 700; color: #fff; transform: skewX(10deg); text-align: center; line-height: 1.2;">
+              Delayed collection leaves street piles for up to 3 days along M.V. Delos Santos Street.
+            </div>
           </div>
         </div>
       </div>
       <div class="speaker-note-text" style="display:none;">
-Here is why dawn dumping happens. > Street sweeping happens at 4:00 in the morning, and the scheduled truck sweeps come at 7:00 AM and 8:00 PM. But residents discard bags around 5:30 to 6:30 AM right before leaving for school or work. > When a pile is missed, it sits on the sidewalk for up to 3 days. It clogs street drainage inlets and turns into an emergency hazard. > As shown on this timeline slider, trash accumulates faster than rigid collection schedules can handle.
+Here is why dawn dumping creates a continuous crisis along M.V. Delos Santos Street. As shown on our 24-hour cycle simulator, the city street sweeper passes at 4:00 AM, leaving the street clean. But between 5:00 and 6:30 AM, thousands of residents discard their bags during early morning departures. By the time the morning garbage truck passes at 7:00 AM, it only collects large piles and misses subsequent bags. During the afternoon, scavengers rip open the plastic bags to look for recyclables, scattering loose waste directly into curb gutters and drainage canals. If a collection is delayed by just one or two days, accumulated waste surges past 5 cubic meters, exceeding the entire capacity of the barangay mini dump truck. By day three, uncollected trash turns into an emergency flood hazard and triggers DILG reprimand memos.
       </div>
     </section>
+
     <section class="slide-view" id="binsnap-04" data-slide="4">
       <div class="slide-header-zone">
         <div class="title-row">
@@ -2007,7 +2113,7 @@ Existing citizen complaint apps have a major problem: they are passive complaint
           </div>
           <div class="bento-card border-white" style="padding: 10px 16px;" data-source="Ch. 1 Statement of the Problem Question 5" data-purpose="RQ5">
             <span class="card-kicker-tag">RQ5 // SYSTEM USABILITY</span>
-            <div class="card-body-text" style="font-size: 24px;">How do resident volunteers, student dormers, and staff rate usability on the SUS?</div>
+            <div class="card-body-text" style="font-size: 24px;">How do resident volunteers, local community members, and staff rate usability on the SUS?</div>
           </div>
         </div>
         <!-- Right: Hypotheses for RQ3 -->
@@ -2272,7 +2378,7 @@ Cleanup routing is modeled as a Capacitated Vehicle Routing Problem with Time Wi
         <div class="bento-card border-red" style="padding: 22px 28px; flex: 1;" data-source="Ch. 3 System Description &amp; Ch. 1 Beneficiaries" data-purpose="Prototype Interfaces">
         <div class="proto-panel" id="proto-citizen" style="display: block;">
           <div style="font-family: var(--font-display); font-size: 44px; color: #fff; line-height: 1.05;">CITIZEN PROGRESSIVE WEB APP</div>
-          <div class="meta-tag" style="margin: 6px 0 14px; display: inline-block;">USERS: RESIDENTS AND DORMERS</div>
+          <div class="meta-tag" style="margin: 6px 0 14px; display: inline-block;">USERS: BARANGAY RESIDENTS</div>
           <div style="display: flex; flex-direction: column; gap: 12px;">
             <div class="bento-card border-red" style="padding: 14px 20px;" data-source="Ch. 3 System Description &amp; Ch. 1 Beneficiaries" data-purpose="Prototype Interface Features">
               <div class="card-kicker-tag">FAST REPORTING</div>
@@ -2368,7 +2474,7 @@ BinSnap provides three tailored interfaces connecting to one database: > For res
           </div>
           <div class="bento-card border-white locale-card" data-cat="area" style="padding: 6px 14px;" data-source="Ch. 3 Scope of the Study &amp; Appendix A" data-purpose="Locale and Sampling">
             <div class="card-kicker-tag">STUDY AREA</div>
-            <div class="card-body-text" style="font-size: 20px;">Dormitory population of 2,500-3,000 residents.</div>
+            <div class="card-body-text" style="font-size: 20px;">Local population of 2,500-3,000 residents.</div>
           </div>
           <div class="bento-card border-white locale-card" data-cat="area" style="padding: 6px 14px;" data-source="Ch. 3 Scope of the Study &amp; Appendix A" data-purpose="Locale and Sampling">
             <div class="card-kicker-tag">STUDY AREA</div>
@@ -2393,7 +2499,7 @@ BinSnap provides three tailored interfaces connecting to one database: > For res
         </div>
       </div>
       <div class="speaker-note-text" style="display:none;">
-Our study is strictly delimited to Barangay 399, Zone 41, Sampaloc, centered on M.V. Delos Santos Street. > The area has around 2,800 dormitory residents. We calibrate vehicle capacity to the barangay's two mini dump trucks of 4 to 5 cubic meters over the OpenStreetMap road graph. > Our dataset requires a minimum of 60 verified hotspot records across four scenario sizes, with 30 participants completing usability testing.
+Our study is strictly delimited to Barangay 399, Zone 41, Sampaloc, centered on M.V. Delos Santos Street. > The area has around 2,800 local residents. We calibrate vehicle capacity to the barangay's two mini dump trucks of 4 to 5 cubic meters over the OpenStreetMap road graph. > Our dataset requires a minimum of 60 verified hotspot records across four scenario sizes, with 30 participants completing usability testing.
       </div>
     </section>
 <section class="slide-view" id="binsnap-13" data-slide="13">
@@ -2536,7 +2642,7 @@ Our evaluation maps directly to our research questions: > For image verification
           <div class="card-kicker-tag">FIVE BENEFICIARY GROUPS</div>
           <div style="display: flex; flex-direction: column; gap: 6px;">
             <div style="background: var(--bg-panel-alt); padding: 6px 12px; border-left: 3px solid var(--white-stark);">
-              <span class="meta-tag">01 // RESIDENTS & DORMERS</span>
+              <span class="meta-tag">01 // BARANGAY RESIDENTS</span>
               <div class="card-body-text" style="font-size: 24px; margin-top: 2px;">Fast reporting via PWA, transparent status badges, and cleanup updates.</div>
             </div>
             <div style="background: var(--bg-panel-alt); padding: 6px 12px; border-left: 3px solid var(--white-stark);">
@@ -3263,51 +3369,222 @@ To bring this architecture to life, we developed three synchronized user interfa
     </section>
 
     <!-- ==================== BEACON SLIDE 09: LOCALE & SAMPLING ==================== -->
+        <!-- ==================== BEACON SLIDE 09: LOCALE & SAMPLING (3 STATIONS VIA K-MEANS) ==================== -->
+        <!-- ==================== BEACON SLIDE 09: LOCALE & SAMPLING (3 STATIONS VIA K-MEANS) ==================== -->
+        <!-- ==================== BEACON SLIDE 09: LOCALE & SAMPLING (3 STATIONS VIA K-MEANS) ==================== -->
+        <!-- ==================== BEACON SLIDE 09: LOCALE & SAMPLING (3 STATIONS VIA K-MEANS) ==================== -->
+        <!-- ==================== BEACON SLIDE 09: LOCALE & SAMPLING (3 STATIONS VIA K-MEANS) ==================== -->
     <section class="slide-view" id="beacon-09" data-presenter="lixter">
       <div class="slide-header-zone">
         <div class="title-row">
-          <div class="title-white-tag">LOCALE & SAMPLING:</div>
-          <div class="title-cyan-tag">14 MPD STATIONS & FLEET ALLOCATION</div>
+          <div class="title-white-tag">LOCALE &amp; SAMPLING:</div>
+          <div class="title-cyan-tag">CENTRAL MANILA CLUSTER VIA K-MEANS</div>
         </div>
-        <div class="slide-subtitle-text" data-source="Strategy Slide 9 & Ch.3 Research Locale" data-purpose="Manila Police District Sampling">
-          Complete geographic coverage across all 14 MPD Police Stations categorized into 3 traffic clusters
+        <div class="slide-subtitle-text" data-source="Ch. 3 Research Locale &amp; Figure 2 K-Means Clustering" data-purpose="3 Stations Selection via K-Means">
+          K-means clustering applied to the 14 MPD stations to determine spatial clusters and derive the 3 contiguous study stations
         </div>
       </div>
-      <div class="slide-content-zone" style="display: flex; flex-direction: column; gap: 12px;">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <div style="display: flex; gap: 8px;">
-            <button class="mpd-filter-btn active" onclick="filterMPDCluster('all')">ALL 14 STATIONS</button>
-            <button class="mpd-filter-btn" onclick="filterMPDCluster('c1')">CLUSTER 1: HIGH CONGESTION (TAFT / ESPANA)</button>
-            <button class="mpd-filter-btn" onclick="filterMPDCluster('c2')">CLUSTER 2: MODERATE CONGESTION (STA. MESA)</button>
-            <button class="mpd-filter-btn" onclick="filterMPDCluster('c3')">CLUSTER 3: LOW CONGESTION (PORT / NORTH)</button>
+      <div class="slide-content-zone" style="display: flex; flex-direction: column; gap: 10px; height: 615px;">
+        <!-- Main 2-Column Grid -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; flex: 1; min-height: 0;">
+          <!-- Left: Figure 2 K-Means Scatter Plot Map -->
+          <div class="bento-card border-cyan" style="padding: 10px 14px; display: flex; flex-direction: column; justify-content: space-between; background: rgba(5,15,22,0.95); min-height: 0;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+              <div class="card-kicker-cyan" style="font-size: 12px;">FIGURE 2 // K-MEANS CLUSTERING OF 14 MPD STATIONS</div>
+              <span class="meta-tag" style="background: var(--cyan-primary); color: #000; font-weight: 800; font-size: 10px;">STUDY SCOPE: 3 STATIONS</span>
+            </div>
+
+            <!-- SVG Scatter Plot Map -->
+            <div style="flex: 1; min-height: 0; position: relative; background: #060a0f; border: 1px solid rgba(0,229,255,0.25); border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+              <svg viewBox="0 0 500 350" style="width: 100%; height: 100%;" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <!-- Glow Filter -->
+                  <filter id="glow-cyan-b09" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                  </filter>
+                </defs>
+
+                <!-- Plot Title matching Figure 2 -->
+                <text x="250" y="16" fill="#fff" font-family="var(--font-mono)" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="0.5">K-Means Clustering of 14 Manila Police District Stations</text>
+
+                <!-- Grid Lines -->
+                <line x1="50" y1="32" x2="475" y2="32" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                <line x1="50" y1="94" x2="475" y2="94" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                <line x1="50" y1="156" x2="475" y2="156" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                <line x1="50" y1="218" x2="475" y2="218" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                <line x1="50" y1="280" x2="475" y2="280" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+
+                <line x1="125" y1="25" x2="125" y2="310" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                <line x1="205" y1="25" x2="205" y2="310" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                <line x1="285" y1="25" x2="285" y2="310" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                <line x1="365" y1="25" x2="365" y2="310" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                <line x1="445" y1="25" x2="445" y2="310" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+
+                <!-- Main Axes -->
+                <line x1="50" y1="25" x2="50" y2="310" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+                <line x1="50" y1="310" x2="475" y2="310" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+
+                <!-- Axis Labels -->
+                <text x="14" y="165" fill="var(--gray-secondary)" font-family="var(--font-mono)" font-size="10" transform="rotate(-90 14 165)" text-anchor="middle">Latitude</text>
+                <text x="260" y="336" fill="var(--gray-secondary)" font-family="var(--font-mono)" font-size="10" text-anchor="middle">Longitude (+1.21e2)</text>
+
+                <!-- Y-Axis Ticks -->
+                <text x="44" y="36" fill="var(--gray-secondary)" font-family="var(--font-mono)" font-size="8.5" text-anchor="end">14.62</text>
+                <text x="44" y="98" fill="var(--gray-secondary)" font-family="var(--font-mono)" font-size="8.5" text-anchor="end">14.61</text>
+                <text x="44" y="160" fill="var(--gray-secondary)" font-family="var(--font-mono)" font-size="8.5" text-anchor="end">14.60</text>
+                <text x="44" y="222" fill="var(--gray-secondary)" font-family="var(--font-mono)" font-size="8.5" text-anchor="end">14.59</text>
+                <text x="44" y="284" fill="var(--gray-secondary)" font-family="var(--font-mono)" font-size="8.5" text-anchor="end">14.58</text>
+
+                <!-- X-Axis Ticks -->
+                <text x="125" y="322" fill="var(--gray-secondary)" font-family="var(--font-mono)" font-size="8.5" text-anchor="middle">-0.03</text>
+                <text x="205" y="322" fill="var(--gray-secondary)" font-family="var(--font-mono)" font-size="8.5" text-anchor="middle">-0.02</text>
+                <text x="285" y="322" fill="var(--gray-secondary)" font-family="var(--font-mono)" font-size="8.5" text-anchor="middle">-0.01</text>
+                <text x="365" y="322" fill="var(--gray-secondary)" font-family="var(--font-mono)" font-size="8.5" text-anchor="middle">0.00</text>
+                <text x="445" y="322" fill="var(--gray-secondary)" font-family="var(--font-mono)" font-size="8.5" text-anchor="middle">0.01</text>
+
+                <!-- Cluster Polygon: Connects Sta. Cruz, Barbosa, Sampaloc -->
+                <polygon points="218,142 324,124 268,174" fill="rgba(0,229,255,0.22)" stroke="var(--cyan-primary)" stroke-width="2" stroke-dasharray="4,3" filter="url(#glow-cyan-b09)"/>
+                <text x="272" y="148" fill="var(--cyan-primary)" font-family="var(--font-mono)" font-size="8.5" font-weight="800" text-anchor="middle" letter-spacing="0.5">CENTRAL STUDY CLUSTER</text>
+
+                <!-- Legend Box (matching manuscript Figure 2) -->
+                <rect x="340" y="30" width="130" height="52" fill="rgba(0,0,0,0.85)" stroke="rgba(255,255,255,0.3)" stroke-width="0.8" rx="2"/>
+                <circle cx="352" cy="41" r="4.5" fill="#e60012"/>
+                <text x="362" y="44" fill="#ddd" font-family="var(--font-mono)" font-size="8.5">Cluster 0 (3 stations)</text>
+                <rect x="347" y="49" width="9" height="9" fill="#1e88e5"/>
+                <text x="362" y="57" fill="#ddd" font-family="var(--font-mono)" font-size="8.5">Cluster 1 (9 stations)</text>
+                <polygon points="352,65 358,74 346,74" fill="#43a047"/>
+                <text x="362" y="72" fill="#ddd" font-family="var(--font-mono)" font-size="8.5">Cluster 2 (2 stations)</text>
+
+                <!-- Non-Study Stations -->
+                <!-- Cluster 1 (Blue squares) -->
+                <rect x="104" y="58" width="8.5" height="8.5" fill="#1e88e5" opacity="0.6"/>
+                <text x="108" y="54" fill="#aaa" font-family="var(--font-mono)" font-size="8" text-anchor="middle">Raxabago</text>
+
+                <rect x="186" y="77" width="8.5" height="8.5" fill="#1e88e5" opacity="0.6"/>
+                <text x="190" y="73" fill="#aaa" font-family="var(--font-mono)" font-size="8" text-anchor="middle">Jose Abad Santos</text>
+
+                <rect x="128" y="114" width="8.5" height="8.5" fill="#1e88e5" opacity="0.6"/>
+                <text x="132" y="110" fill="#aaa" font-family="var(--font-mono)" font-size="8" text-anchor="middle">Moriones</text>
+
+                <rect x="169" y="142" width="8.5" height="8.5" fill="#1e88e5" opacity="0.6"/>
+                <text x="173" y="138" fill="#aaa" font-family="var(--font-mono)" font-size="8" text-anchor="middle">Meisic</text>
+
+                <rect x="144" y="170" width="8.5" height="8.5" fill="#1e88e5" opacity="0.6"/>
+                <text x="148" y="166" fill="#aaa" font-family="var(--font-mono)" font-size="8" text-anchor="middle">Del Pan</text>
+
+                <rect x="128" y="188" width="8.5" height="8.5" fill="#1e88e5" opacity="0.6"/>
+                <text x="132" y="184" fill="#aaa" font-family="var(--font-mono)" font-size="8" text-anchor="middle">Baseco</text>
+
+                <rect x="177" y="235" width="8.5" height="8.5" fill="#1e88e5" opacity="0.6"/>
+                <text x="181" y="231" fill="#aaa" font-family="var(--font-mono)" font-size="8" text-anchor="middle">Ermita</text>
+
+                <!-- Cluster 2 (Green triangle) -->
+                <polygon points="414,155 421,165 407,165" fill="#43a047" opacity="0.6"/>
+                <text x="414" y="151" fill="#aaa" font-family="var(--font-mono)" font-size="8" text-anchor="middle">Sta. Mesa</text>
+
+                <!-- Cluster 0 (Red circles) -->
+                <circle cx="365" cy="192" r="5" fill="#e60012" opacity="0.6"/>
+                <text x="365" y="186" fill="#aaa" font-family="var(--font-mono)" font-size="8" text-anchor="middle">Pandacan</text>
+
+                <circle cx="398" cy="248" r="5" fill="#e60012" opacity="0.6"/>
+                <text x="398" y="242" fill="#aaa" font-family="var(--font-mono)" font-size="8" text-anchor="middle">Sta. Ana</text>
+
+                <circle cx="284" cy="306" r="5" fill="#e60012" opacity="0.6"/>
+                <text x="284" y="300" fill="#aaa" font-family="var(--font-mono)" font-size="8" text-anchor="middle">Malate</text>
+
+                <!-- 3 SELECTED CORE STUDY STATIONS (Glowing Cyan Highlights) -->
+                <!-- 1. Sta. Cruz (Cluster 1) -->
+                <circle cx="218" cy="142" r="11" fill="none" stroke="var(--cyan-primary)" stroke-width="2" opacity="0.85"/>
+                <rect x="213" y="137" width="10" height="10" fill="var(--cyan-primary)" stroke="#fff" stroke-width="1.8" filter="url(#glow-cyan-b09)"/>
+                <text x="218" y="129" fill="#fff" font-family="var(--font-mono)" font-size="10" font-weight="800" text-anchor="middle">STA. CRUZ</text>
+
+                <!-- 2. Barbosa (Cluster 1) -->
+                <circle cx="268" cy="174" r="11" fill="none" stroke="var(--cyan-primary)" stroke-width="2" opacity="0.85"/>
+                <rect x="263" y="169" width="10" height="10" fill="var(--cyan-primary)" stroke="#fff" stroke-width="1.8" filter="url(#glow-cyan-b09)"/>
+                <text x="268" y="193" fill="#fff" font-family="var(--font-mono)" font-size="10" font-weight="800" text-anchor="middle">BARBOSA</text>
+
+                <!-- 3. Sampaloc (Cluster 2) -->
+                <circle cx="324" cy="124" r="11" fill="none" stroke="var(--cyan-primary)" stroke-width="2" opacity="0.85"/>
+                <polygon points="324,116 332,131 316,131" fill="#00e5ff" stroke="#fff" stroke-width="1.8" filter="url(#glow-cyan-b09)"/>
+                <text x="324" y="110" fill="#fff" font-family="var(--font-mono)" font-size="10" font-weight="800" text-anchor="middle">SAMPALOC</text>
+              </svg>
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 10.5px; color: var(--gray-secondary); text-align: center; margin-top: 4px;">
+              Figure 2. K-means clustering of the 14 Manila Police District Stations (BEACON Manuscript Ch. 3).
+            </div>
           </div>
-          <div class="meta-tag">FLEET ALLOCATION: 6 PATROL CARS // 10 MOTORCYCLES</div>
+
+          <!-- Right: 3 Stations Table & K-Means Rationale (Matching User's Image 1) -->
+          <div style="display: flex; flex-direction: column; gap: 8px; justify-content: space-between; min-height: 0;">
+            <!-- Stations Table -->
+            <div class="bento-card border-white" style="padding: 10px 14px; background: rgba(12,18,24,0.95); flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+              <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--cyan-primary); padding-bottom: 4px; margin-bottom: 4px;">
+                <div style="font-family: var(--font-display); font-size: 14px; color: var(--cyan-primary); letter-spacing: 1px;">MANILA POLICE DISTRICT STATIONS</div>
+                <div style="font-family: var(--font-mono); font-size: 10px; color: var(--gray-secondary);">LOCATIONS &amp; JURISDICTIONS</div>
+              </div>
+
+              <!-- Row 1: Sta. Cruz -->
+              <div style="padding: 6px 10px; background: rgba(0,229,255,0.06); border-left: 3px solid var(--cyan-primary); margin-bottom: 4px;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                  <div style="font-family: var(--font-display); font-size: 16px; color: #fff;">STA. CRUZ POLICE STATION</div>
+                  <span class="meta-tag" style="background: rgba(0,229,255,0.2); color: var(--cyan-primary); font-size: 10px;">82 BARANGAYS</span>
+                </div>
+                <div class="card-body-text" style="font-size: 12px; line-height: 1.35; margin-top: 2px; color: #ccc;">
+                  <strong>Sta. Cruz District: 82 Barangays</strong> (Zones 29–37; Brgys. 297–382: Central Market, Rizal Ave [Avenida], Recto North).
+                </div>
+              </div>
+
+              <!-- Row 2: Sampaloc -->
+              <div style="padding: 6px 10px; background: rgba(0,229,255,0.06); border-left: 3px solid var(--cyan-primary); margin-bottom: 4px;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                  <div style="font-family: var(--font-display); font-size: 16px; color: #fff;">SAMPALOC POLICE STATION</div>
+                  <span class="meta-tag" style="background: rgba(0,229,255,0.2); color: var(--cyan-primary); font-size: 10px;">192 BARANGAYS</span>
+                </div>
+                <div class="card-body-text" style="font-size: 12px; line-height: 1.35; margin-top: 2px; color: #ccc;">
+                  <strong>Sampaloc District: 192 Barangays</strong> (Zones 41–57; Brgys. 395–586: España Blvd, Morayta, U-Belt East, Balic-Balic).
+                </div>
+              </div>
+
+              <!-- Row 3: Barbosa -->
+              <div style="padding: 6px 10px; background: rgba(0,229,255,0.06); border-left: 3px solid var(--cyan-primary);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                  <div style="font-family: var(--font-display); font-size: 16px; color: #fff;">BARBOSA POLICE STATION</div>
+                  <span class="meta-tag" style="background: rgba(0,229,255,0.2); color: var(--cyan-primary); font-size: 10px;">16 BARANGAYS</span>
+                </div>
+                <div class="card-body-text" style="font-size: 12px; line-height: 1.35; margin-top: 2px; color: #ccc;">
+                  <strong>Quiapo District &amp; U-Belt Core: 16 Barangays</strong> (Zone 30: Brgys. 306–309; Zone 39: Brgys. 383–388; Zone 40: Brgys. 389–394: Quiapo Church, Plaza Miranda, C.M. Recto South, Lerma, Hidalgo, Muslim Town, Mendiola/UE perimeter).
+                </div>
+              </div>
+            </div>
+
+            <!-- K-Means Rationale Card -->
+            <div class="bento-card border-cyan" style="padding: 8px 12px; background: rgba(5,15,22,0.95);">
+              <div class="card-kicker-cyan" style="font-size: 11px; margin-bottom: 2px;">K-MEANS CLUSTERING RATIONALE // CONTIGUOUS EXPERIMENTAL BOUNDARY</div>
+              <div class="card-body-text" style="font-size: 12px; line-height: 1.35; color: #ccc;">
+                K-Means spatial clustering grouped the 14 MPD stations by coordinate proximity. <strong>Sta. Cruz, Sampaloc, and Barbosa</strong> form a high-density contiguous cluster sharing major bottleneck corridors (C.M. Recto, España, Avenida), providing the ideal ground truth to evaluate cross-jurisdictional allocation vs. administrative boundary silos.
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="mpd-station-grid" id="mpd-station-grid">
-          <!-- 14 Stations -->
-          <div class="mpd-station-card c1"><div class="meta-tag">PS-01</div><div style="font-size:12px;font-weight:700;">BALUT</div><div style="font-size:10px;color:#aaa;">TONDO I</div></div>
-          <div class="mpd-station-card c1"><div class="meta-tag">PS-02</div><div style="font-size:12px;font-weight:700;">MORIONES</div><div style="font-size:10px;color:#aaa;">TONDO II</div></div>
-          <div class="mpd-station-card c1"><div class="meta-tag">PS-03</div><div style="font-size:12px;font-weight:700;">STA. CRUZ</div><div style="font-size:10px;color:#aaa;">DOWNTOWN</div></div>
-          <div class="mpd-station-card c1"><div class="meta-tag">PS-04</div><div style="font-size:12px;font-weight:700;">SAMPALOC</div><div style="font-size:10px;color:#aaa;">UBELT</div></div>
-          <div class="mpd-station-card c1"><div class="meta-tag">PS-05</div><div style="font-size:12px;font-weight:700;">ERMITA</div><div style="font-size:10px;color:#aaa;">CITY HALL</div></div>
-          <div class="mpd-station-card c2"><div class="meta-tag">PS-06</div><div style="font-size:12px;font-weight:700;">STA. ANA</div><div style="font-size:10px;color:#aaa;">RIVER CORRIDOR</div></div>
-          <div class="mpd-station-card c2"><div class="meta-tag">PS-07</div><div style="font-size:12px;font-weight:700;">JOSE ABAD</div><div style="font-size:10px;color:#aaa;">NORTH AVE</div></div>
-          <div class="mpd-station-card c2"><div class="meta-tag">PS-08</div><div style="font-size:12px;font-weight:700;">STA. MESA</div><div style="font-size:10px;color:#aaa;">MAGSAYSAY</div></div>
-          <div class="mpd-station-card c2"><div class="meta-tag">PS-09</div><div style="font-size:12px;font-weight:700;">MALATE</div><div style="font-size:10px;color:#aaa;">TAFT AVE</div></div>
-          <div class="mpd-station-card c2"><div class="meta-tag">PS-10</div><div style="font-size:12px;font-weight:700;">PANDACAN</div><div style="font-size:10px;color:#aaa;">BEATA ST</div></div>
-          <div class="mpd-station-card c3"><div class="meta-tag">PS-11</div><div style="font-size:12px;font-weight:700;">MEISIC</div><div style="font-size:10px;color:#aaa;">BINONDO</div></div>
-          <div class="mpd-station-card c3"><div class="meta-tag">PS-12</div><div style="font-size:12px;font-weight:700;">DELPAN</div><div style="font-size:10px;color:#aaa;">PORT AREA</div></div>
-          <div class="mpd-station-card c3"><div class="meta-tag">PS-13</div><div style="font-size:12px;font-weight:700;">BASECO</div><div style="font-size:10px;color:#aaa;">COASTAL</div></div>
-          <div class="mpd-station-card c3"><div class="meta-tag">PS-14</div><div style="font-size:12px;font-weight:700;">QUIAPO</div><div style="font-size:10px;color:#aaa;">QUEZON BLVD</div></div>
-        </div>
-        <div class="slanted-cyan-band" style="font-size: 22px; padding: 8px;">
-          STRATIFIED SAMPLING ENSURES VALIDATION SPANS HIGH-CONGESTION RADIAL CORRIDORS AND PERIPHERAL SECTORS.
+
+        <!-- Bottom Slanted Alert Band -->
+        <div class="slanted-cyan-band" style="font-size: 16px; padding: 6px 20px; letter-spacing: 2px; transform: skewX(-8deg); margin-top: 2px;">
+          <span style="display: inline-block; transform: skewX(8deg);">
+            K-MEANS CLUSTERING DERIVES 3 CONTIGUOUS POLICE STATIONS COVERING 290 CENTRAL MANILA BARANGAYS.
+          </span>
         </div>
       </div>
+
       <div class="speaker-note-text" style="display:none;">
-This slide shows our system architecture, and this is where Beacon fundamentally changes emergency policing. > Notice that all three user interfaces connect to ONE central server. > That central server maintains a unified database of all active vehicles across all three police stations: Barbosa, Sampaloc, and Sta. Cruz. > In traditional policing, police stations operate in strict administrative silos. If a crime happens on the border of Barbosa, the Barbosa desk officer only looks at Barbosa cars. If their cars are stuck in traffic or busy, the officer has to manually radio Sampaloc and ask for assistance, wasting precious minutes. > With Beacon's centralized architecture, the system automatically evaluates vehicles from all three stations simultaneously. If a Sampaloc vehicle is closer in travel time to a Barbosa incident, Beacon recommends that vehicle instantly. > Centralized architecture enables cross-jurisdiction allocation without manual radio communication.
+To define our study area, we applied K-Means clustering across the locations of all 14 Manila Police District stations. As shown in Figure 2 on the map, K-Means grouped the stations by coordinate proximity into spatial clusters of nearby stations. From this analysis, we selected the Central Manila Cluster consisting of three contiguous stations: Sta. Cruz, Sampaloc, and Barbosa. As shown in our table, these three stations collectively cover 290 barangays across the University Belt, Quiapo, and Avenida corridors. Because these three stations directly border one another along congested arteries like C.M. Recto and España Boulevard, they represent the exact operational environment where cross-jurisdiction travel-time allocation can eliminate boundary delays.
       </div>
     </section>
+
+
+
+
+
 
     <!-- ==================== BEACON SLIDE 10: METHODOLOGY ==================== -->
     <section class="slide-view" id="beacon-10" data-presenter="lixter">
@@ -4213,6 +4490,14 @@ function fmtClock(h) {
   return h12 + ':' + (mm < 10 ? '0' + mm : mm) + ' ' + ap;
 }
 
+function setDumpScenario(h, d) {
+  const hs = document.getElementById('dump-hour');
+  const ds = document.getElementById('dump-days');
+  if (hs) hs.value = h;
+  if (ds) ds.value = d;
+  updateDumpClock();
+}
+
 function updateDumpClock() {
   const hs = document.getElementById('dump-hour');
   const ds = document.getElementById('dump-days');
@@ -4224,22 +4509,91 @@ function updateDumpClock() {
   if (clockEl) clockEl.textContent = fmtClock(h);
   if (daysEl) daysEl.textContent = d;
   if (cursorEl) cursorEl.style.left = (h / 24 * 100) + '%';
-  let status;
-  if (h < 4) status = 'Dumping window: piles form before the 4:00 AM sweep.';
-  else if (h < 7) status = 'Sweep done at 4:00 AM. Next collection at 7:00 AM.';
-  else if (h < 20) status = '7:00 AM collection done. Next collection at 8:00 PM.';
-  else status = '8:00 PM collection done. Dawn dumping starts again after midnight.';
+
+  // Dynamic volume (m3) grounded in 2,500 resident generation & mini truck capacity (4-5 m3)
+  let baseVol = 0.4;
+  let phaseTitle = '';
+  let status = '';
+
+  if (h < 4.0) {
+    phaseTitle = 'OVERNIGHT ACCUMULATION (00:00 - 04:00 AM)';
+    status = 'Late-night residential bags accumulate outside gates along M.V. Delos Santos Street. Street awaits the 4:00 AM Department of Public Services manual sweep.';
+    baseVol = 0.4 + (h / 4.0) * 0.3;
+  } else if (h < 5.0) {
+    phaseTitle = 'MUNICIPAL STREET SWEEP (04:00 - 05:00 AM)';
+    status = 'City street sweepers clean curbs and sidewalk gutters. Baseline street condition is clean for a narrow 60-minute window.';
+    baseVol = 0.15;
+  } else if (h < 7.0) {
+    phaseTitle = 'DAWN DUMPING SPIKE (05:00 - 06:30 AM)';
+    status = '2,500+ residents leave during early morning hours, discarding unsegregated plastic bags onto sidewalks right after the 4:00 AM sweeper leaves.';
+    baseVol = 0.3 + ((h - 5.0) / 2.0) * 2.5; // surges up to 2.8 m3
+  } else if (h < 8.0) {
+    phaseTitle = 'MORNING CITY COLLECTION (07:00 AM)';
+    status = 'Contracted city hauling truck passes M.V. Delos Santos St. Stops only for visible piles; missed bags stay on curbs throughout the heat of the day.';
+    baseVol = 0.8;
+  } else if (h < 18.0) {
+    phaseTitle = 'DAYTIME DECAY & SCAVENGER DISPERSAL (08:00 AM - 06:00 PM)';
+    status = 'Uncollected piles sit exposed to heat. Informal waste pickers (mangangalakal) tear open plastic bags for recyclables, scattering loose litter into drainage inlets.';
+    baseVol = 0.8 + ((h - 8.0) / 10.0) * 1.8; // climbs to ~2.6 m3
+  } else if (h < 20.0) {
+    phaseTitle = 'PRE-EVENING RESIDENTIAL DUMPING (06:00 - 08:00 PM)';
+    status = 'Dinner food packaging and evening residential waste accumulate before the second scheduled city collection sweep.';
+    baseVol = 2.6 + ((h - 18.0) / 2.0) * 0.8; // climbs to 3.4 m3
+  } else if (h < 21.0) {
+    phaseTitle = 'EVENING TRUCK COLLECTION (08:00 PM)';
+    status = 'Second city collection vehicle passes. Parked tricycles and narrow alleys leave uncollected pockets that carry over into the next day.';
+    baseVol = 0.9;
+  } else {
+    phaseTitle = 'LATE NIGHT DORM RESIDUAL (09:00 PM - 12:00 MN)';
+    status = 'Cycle resets. Night residential waste and late-night food packaging accumulate along street corners.';
+    baseVol = 0.9 + ((h - 21.0) / 3.0) * 0.6;
+  }
+
+  // Days uncollected multiplier (cumulative delay)
+  const totalVol = Math.round((baseVol + d * 1.8) * 10) / 10;
+  const truckCap = 5.0; // 4-5 m3 mini dump truck
+  const pct = Math.min(100, Math.round((totalVol / truckCap) * 100));
+
+  const phaseTitleEl = document.getElementById('dump-phase-title');
+  if (phaseTitleEl) phaseTitleEl.textContent = phaseTitle;
+
   const statEl = document.getElementById('dump-status');
   if (statEl) statEl.textContent = status;
-  const pile = d === 0 ? 'Collected on schedule: street clear.'
-    : d < 3 ? 'Collection delayed: piles remain on the street (day ' + d + ' of up to 3).'
-    : 'Day 3: piles turn complaints into emergency cleanups.';
+
+  const volEl = document.getElementById('dump-vol-val');
+  if (volEl) {
+    volEl.textContent = totalVol + ' m³';
+    volEl.style.color = totalVol > truckCap ? 'var(--red-primary)' : totalVol > 2.5 ? 'var(--amber-accent)' : '#00e5ff';
+  }
+
   const pileEl = document.getElementById('dump-pile');
-  if (pileEl) pileEl.textContent = pile;
+  if (pileEl) {
+    if (d === 0) {
+      pileEl.textContent = pct + '% of Mini Dump Truck capacity (4–5 m³ limit). Normal single-day volume.';
+    } else if (d === 1) {
+      pileEl.textContent = pct + '% capacity. 24-hr linger: bags deteriorating; near truck single-trip threshold.';
+    } else if (d === 2) {
+      pileEl.textContent = '100%+ OVERFLOW (' + totalVol + ' m³). Exceeds single mini-truck capacity. Route overflow guaranteed.';
+    } else {
+      pileEl.textContent = 'CRITICAL 3-DAY EMERGENCY (' + totalVol + ' m³). Requires 2 full mini-truck trips. DILG citation threshold.';
+    }
+  }
+
   const fill = document.getElementById('dump-bar-fill');
   if (fill) {
-    fill.style.width = (d / 3 * 100) + '%';
-    fill.style.background = d === 3 ? 'var(--red-primary)' : 'var(--amber-accent)';
+    fill.style.width = pct + '%';
+    fill.style.background = totalVol > truckCap ? 'var(--red-primary)' : totalVol > 2.5 ? 'var(--amber-accent)' : '#00e5ff';
+  }
+
+  const hazardEl = document.getElementById('dump-hazard-line');
+  if (hazardEl) {
+    if (totalVol < 1.0) {
+      hazardEl.innerHTML = '<span style="color: #00e5ff;">✓ LOW DRAINAGE HAZARD:</span> Sidewalk curb gutters and canal inlets clear.';
+    } else if (totalVol < 3.5) {
+      hazardEl.innerHTML = '<span style="color: var(--amber-accent);">⚠ ELEVATED HAZARD:</span> Scavenger dispersal encroaching on M.V. Delos Santos drainage inlets.';
+    } else {
+      hazardEl.innerHTML = '<span style="color: var(--red-primary); font-weight: 800;">🚨 CRITICAL CANAL HAZARD:</span> Gutters fully obstructed; flash flood risk under rain surge.';
+    }
   }
 }
 
@@ -5019,9 +5373,9 @@ let smPanStart = { x: 0, y: 0 };
 let smDroppedPins = [];
 
 const smHotspots = [
-  { id: 'H1', name: 'M.V. Delos Santos Dorm Corridor', x: 420, y: 390, dorms: '2,800 students', piles: '4 daily dawn heaps', status: 'High Frequency', type: 'Dormitory Waste' },
+  { id: 'H1', name: 'M.V. Delos Santos Residential Corridor', x: 420, y: 390, dorms: '2,800 residents', piles: '4 daily dawn heaps', status: 'High Frequency', type: 'Residential Waste' },
   { id: 'H2', name: 'San Antonio St. Gutter', x: 520, y: 620, dorms: '600 residents', piles: 'Unsegregated domestic', status: 'Moderate', type: 'Household Plastic' },
-  { id: 'H3', name: 'P. Noval St. Commercial Border', x: 810, y: 440, dorms: 'Food stalls & dormers', piles: 'Grease and food takeout', status: 'High Priority', type: 'Organic Sludge' },
+  { id: 'H3', name: 'P. Noval St. Commercial Border', x: 810, y: 440, dorms: 'Food stalls & shops', piles: 'Grease and food takeout', status: 'High Priority', type: 'Organic Sludge' },
   { id: 'H4', name: 'Canal Inflow Drainage Grate', x: 230, y: 310, dorms: 'Zone 41 Boundary', piles: 'Drainage obstruction', status: 'Critical Canal Hazard', type: 'Flood Risk' }
 ];
 
@@ -5216,7 +5570,7 @@ function smInspectHotspot(id) {
   if (titleEl && textEl) {
     titleEl.textContent = `${h.id} // ${h.name.toUpperCase()}`;
     titleEl.style.color = 'var(--red-primary)';
-    textEl.innerHTML = `<strong>Dormitory Density:</strong> ${h.dorms}<br><strong>Waste Pattern:</strong> ${h.piles}<br><strong>Field Urgency:</strong> ${h.status} (${h.type})`;
+    textEl.innerHTML = `<strong>Population Density:</strong> ${h.dorms}<br><strong>Waste Pattern:</strong> ${h.piles}<br><strong>Field Urgency:</strong> ${h.status} (${h.type})`;
   }
 }
 
